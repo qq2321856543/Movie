@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="#1C2243"
+        android:layout_margin="@dimen/dp20"
+        android:layout_height="match_parent">
+        
+    <ImageView
+        android:id="@+id/iv"
+        android:layout_width="@dimen/dp100"
+        android:layout_height="@dimen/dp140"
+        android:layout_margin="@dimen/dp20"
+        android:src="@mipmap/ic_launcher"
+        android:scaleType="centerCrop"/>
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" 
+            android:layout_toRightOf="@id/iv"
+            android:text="胜多负少"
+            android:textColor="#FDFDFE"
+            android:layout_alignTop="@id/iv"
+            android:textSize="@dimen/sp15"/>
+        <TextView
+            android:id="@+id/tv_dao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/tv_name"
+            android:text="胜多负少"
+            android:textColor="#FDFDFE"
+            android:layout_below="@id/tv_name"
+            android:layout_marginTop="@dimen/dp10" />
+        <TextView
+            android:id="@+id/tv_zhu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/tv_dao"
+            android:text="胜多负少"
+            android:textColor="#FDFDFE"
+            android:layout_below="@id/tv_dao"
+            android:layout_marginTop="@dimen/dp10" />
+        <TextView
+            android:id="@+id/tv_ping"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/tv_zhu"
+            android:text="胜多负少"
+            android:textColor="#FDFDFE"
+            android:layout_below="@id/tv_zhu"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_marginBottom="@dimen/dp5"/>
+        <Button
+            android:id="@+id/bt_ok"
+            android:layout_width="@dimen/dp45"
+            android:layout_height="@dimen/dp20"
+            android:layout_alignParentRight="true"
+            android:layout_alignBottom="@id/tv_ping"
+            android:layout_marginRight="@dimen/dp10"
+            android:textColor="#FDFDFE"
+            android:text="购票"
+            android:background="#E7185E"/>
+    </RelativeLayout>
+
+</RelativeLayout>

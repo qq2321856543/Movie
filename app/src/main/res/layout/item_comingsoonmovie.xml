@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+     android:layout_width="match_parent"
+    android:background="#141931"
+    android:layout_height="match_parent">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/dp20"
+
+    android:id="@+id/rl"
+    >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_margin="@dimen/dp20"
+        android:background="#1C2243"
+        android:id="@+id/ll"
+        android:orientation="vertical"
+        android:layout_height="@dimen/dp110">
+        <RelativeLayout
+            android:layout_width="400dp"
+            android:layout_height="@dimen/dp110">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="士大夫首发式"
+                android:id="@+id/tv_name"
+                android:layout_marginLeft="10sp"
+                android:textSize="15sp"
+                android:textColor="#FDFDFE"
+                android:layout_marginTop="10dp"
+                android:layout_centerHorizontal="true"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="士大夫首发式"
+                android:id="@+id/tv_shijian"
+                android:textColor="#FDFDFE"
+                android:layout_below="@id/tv_name"
+                android:layout_alignLeft="@id/tv_name"
+                android:layout_marginTop="10dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="士大夫首发式"
+                android:id="@+id/tv_count"
+                android:layout_below="@id/tv_shijian"
+                android:layout_alignLeft="@id/tv_name"
+                android:textColor="#FDFDFE"
+                android:layout_marginTop="10dp"
+                android:layout_centerHorizontal="true"/>
+            <Button
+                android:layout_width="45dp"
+                android:layout_height="20dp"
+                android:id="@+id/bt_ok"
+                android:text="预约"
+                android:background="#E7185E"
+                android:textColor="#FDFDFE"
+                android:layout_toRightOf="@id/tv_count"
+                android:layout_marginLeft="@dimen/dp20"
+                android:layout_alignBottom="@id/tv_count"
+                android:layout_marginRight="15dp"/>
+        </RelativeLayout>
+    </LinearLayout>
+    <!--<ImageView-->
+        <!--android:layout_width="88dp"-->
+        <!--android:layout_height="108dp"-->
+        <!--android:src="@mipmap/ic_launcher"-->
+        <!--android:scaleType="centerCrop"-->
+        <!--android:layout_alignLeft="@id/ll"-->
+        <!--android:layout_marginBottom="20dp"-->
+        <!--android:layout_marginLeft="10sp"-->
+        <!--android:background="@drawable/yuan"-->
+        <!--android:layout_alignBottom="@id/ll"-->
+        <!--android:id="@+id/iv"/>-->
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:layout_width="88dp"
+        android:layout_height="108dp"
+        android:layout_alignLeft="@id/ll"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="10sp"
+        android:layout_alignBottom="@id/ll"
+        fresco:roundedCornerRadius="@dimen/dp20"
+        fresco:roundTopLeft="true"
+        fresco:roundTopRight="true"
+        fresco:roundBottomLeft="true"
+        fresco:roundBottomRight="true"
+        android:id="@+id/iv"/>
+</RelativeLayout>
+</RelativeLayout>

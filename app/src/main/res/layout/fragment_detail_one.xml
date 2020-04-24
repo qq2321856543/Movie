@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#141931"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/tv_ju"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="剧情介绍"
+        android:textColor="#FDFDFE"
+        android:textSize="@dimen/sp20"
+        android:layout_marginTop="@dimen/dp20"
+        android:layout_marginLeft="@dimen/dp15"/>
+    <TextView
+        android:id="@+id/tv_nei"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp100"
+        android:layout_marginTop="@dimen/dp7"
+        android:textColor="#FDFDFE"
+        android:text="就ADSL就阿斯利康大家发生了口角"
+        android:layout_below="@id/tv_ju"
+        android:textSize="@dimen/dp17"
+        android:layout_alignLeft="@id/tv_ju"/>
+    <TextView
+        android:id="@+id/tv_yan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="演职人员"
+        android:textColor="#FDFDFE"
+        android:textSize="@dimen/sp20"
+        android:layout_alignLeft="@id/tv_ju"
+        android:layout_below="@id/tv_nei"/>
+    <TextView
+        android:id="@+id/tv_dao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp7"
+        android:textColor="#FDFDFE"
+        android:text="导演"
+        android:layout_below="@id/tv_yan"
+        android:textSize="@dimen/dp17"
+        android:layout_alignLeft="@id/tv_ju"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_dao"
+        android:layout_width="match_parent"
+        android:layout_below="@id/tv_dao"
+        android:layout_marginTop="@dimen/dp5"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/tv_dao">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <TextView
+        android:id="@+id/tv_yanyuan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp7"
+        android:textColor="#FDFDFE"
+        android:text="演员"
+        android:layout_below="@id/rv_dao"
+        android:textSize="@dimen/dp17"
+        android:layout_alignLeft="@id/tv_ju"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_yanyuan"
+        android:layout_width="match_parent"
+        android:layout_below="@id/tv_yanyuan"
+        android:layout_marginTop="@dimen/dp5"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/tv_dao">
+
+    </android.support.v7.widget.RecyclerView>
+
+</RelativeLayout>
