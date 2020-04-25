@@ -151,9 +151,11 @@ public class Fragment_Movie extends BaseFragment implements ICoolor_Movie.IVew, 
 
     @Override
     protected void initData() {
+
         if (city1 != null){
             city.setText(city1+"");
         }
+
         tv_one.setOnClickListener(this);
         tv_two.setOnClickListener(this);
         tv_three.setOnClickListener(this);
@@ -231,6 +233,15 @@ public class Fragment_Movie extends BaseFragment implements ICoolor_Movie.IVew, 
         Glide.with(getContext()).load(result3.get(0).getHorizontalImage()).error(R.mipmap.ic_launcher).placeholder(R.mipmap.ic_launcher).into(iv_max);
         tv_name.setText(result3.get(0).getName());
         tv_fen.setText(result3.get(0).getScore()+"分");
+        iv_max.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BasePresenter presenter = getPresenter();
+                if (presenter!=null){
+                    ((Presenter_Movie)presenter).getMoviesDetail(result3.get(0).getMovieId());
+                }
+            }
+        });
     }
 
     @Override
@@ -244,7 +255,6 @@ public class Fragment_Movie extends BaseFragment implements ICoolor_Movie.IVew, 
                 String imageUrl = resultBean.getImageUrl();
                 Glide.with(getContext()).load(imageUrl).error(R.mipmap.ic_launcher).placeholder(R.mipmap.ic_launcher).into((ImageView) view);
                 tv_postion.setText(position+"/4");
-                Log.i("fff","position:"+position);
             }
         });
     }

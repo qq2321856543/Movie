@@ -53,6 +53,7 @@ public class HomeActivity extends BaseAcitvity  {
     @SuppressLint("ResourceType")
     @Override
     protected void initData() {
+        showDialog();
         Fragment_Movie fragment_movie = new Fragment_Movie();
         Fragment_Movietheater fragment_movietheater = new Fragment_Movietheater();
         Fragment_My fragment_my = new Fragment_My();
@@ -105,6 +106,7 @@ public class HomeActivity extends BaseAcitvity  {
 
             }
         });
+        hideDialog();
     }
     public class FragmentPageAdap extends FragmentPagerAdapter{
 

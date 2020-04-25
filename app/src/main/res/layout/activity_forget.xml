@@ -10,19 +10,26 @@
         android:layout_weight="4"
         android:background="@mipmap/back"
         android:layout_height="0dp">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/dp20"
-            android:src="@mipmap/shape"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="忘记密码"
-            android:layout_marginTop="37dp"
-            android:layout_marginLeft="100dp"
-            android:textColor="#FDFDFE"
-            android:textSize="16sp"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:id="@+id/iv_shape"
+                android:src="@mipmap/shape"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="忘记密码"
+                android:layout_centerHorizontal="true"
+                android:layout_alignBottom="@id/iv_shape"
+                android:layout_marginTop="37dp"
+                android:layout_marginLeft="100dp"
+                android:textColor="#FDFDFE"
+                android:textSize="16sp"/>
+        </RelativeLayout>
     </LinearLayout>
     <RelativeLayout
         android:layout_width="match_parent"
@@ -94,7 +101,7 @@
             android:layout_width="312dp"
             android:layout_height="44dp"
             android:layout_below="@id/et_newpwd"
-            android:id="@+id/tv_deng"
+            android:id="@+id/bt_deng"
             android:textColor="#FDFDFE"
             android:background="@drawable/yuan4"
             android:layout_marginTop="20dp"

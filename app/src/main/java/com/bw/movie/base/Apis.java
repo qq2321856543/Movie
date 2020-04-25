@@ -9,6 +9,7 @@ import com.bw.movie.bean.Movie_ReleaseMovieBean;
 import com.bw.movie.bean.Moview_MoviesDetail;
 import com.bw.movie.bean.RegisterBean;
 import com.bw.movie.bean.Search_MovieByKeywordBean;
+import com.bw.movie.bean.YingPingBean;
 
 import io.reactivex.Observable;
 import retrofit2.http.Field;
@@ -36,6 +37,11 @@ public interface Apis {
     @FormUrlEncoded
     Observable<LoginBean> getLogin(@Field("email") String email,@Field("pwd") String pwd);
 
+    //修改密码
+    @POST("user/v1/verify/modifyUserPwd")
+    @FormUrlEncoded
+    Observable<RegisterBean> getNewpwd(@Field("oldPwd") String oldPwd,@Field("newPwd") String newPwd,@Field("newPwd2") String newPwd2);
+
     //轮播
     @GET("tool/v2/banner")
     Observable<BannerBean> getBanner();
@@ -59,4 +65,8 @@ public interface Apis {
     //电影详情
     @GET("movie/v2/findMoviesDetail")
     Observable<Moview_MoviesDetail> getMoviesDetail(@Query("movieId") int movieId);
+
+    //影视评价
+    @GET("movie/v2/findAllMovieComment")
+    Observable<YingPingBean> getYingPing(@Query("movieId") int movieId, @Query("page")int page, @Query("count")int count);
 }

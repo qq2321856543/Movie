@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bw.movie.R;
+import com.bw.movie.adapter.ComingSoonMovieAdapter;
 import com.bw.movie.base.BaseAcitvity;
 import com.bw.movie.base.BasePresenter;
 import com.bw.movie.bean.Moview_MoviesDetail;
@@ -26,7 +27,9 @@ import com.bw.movie.view.DrawerLayout;
 
 import org.greenrobot.eventbus.EventBus;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import butterknife.BindView;
 
@@ -94,7 +97,13 @@ public class MoviesDetailActivity extends BaseAcitvity {
         tv_type.setText(list.getMovieType());
         Log.i("ggg",""+list.getMovieType());
         tv_s.setText(list.getDuration());
-        tv_riqi.setText(list.getReleaseTime()+"");
+        Date date = new Date(list.getReleaseTime());
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String format = dateFormat.format(date);
+        String[] split = format.split("-");
+
+        tv_riqi.setText(split[1]+"月"+split[2]+"日"+"上映");
+       // tv_riqi.setText(list.getReleaseTime()+"");
         tv_diqu.setText(list.getPlaceOrigin());
         int whetherFollow = list.getWhetherFollow();
         if (whetherFollow==1){

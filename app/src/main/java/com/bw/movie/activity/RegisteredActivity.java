@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +39,8 @@ public class RegisteredActivity extends BaseAcitvity implements ICoolor_LRE.IVie
     TextView tv_yi;
     @BindView(R.id.bt_zhu)
     Button bt_zhu;
+    @BindView(R.id.iv_shape)
+    ImageView iv_shape;
     @Override
     protected BasePresenter initPresenter() {
         return new Presenter_LRE(this);
@@ -58,6 +61,7 @@ public class RegisteredActivity extends BaseAcitvity implements ICoolor_LRE.IVie
         bt_get.setOnClickListener(this);
         bt_zhu.setOnClickListener(this);
         tv_yi.setOnClickListener(this);
+        iv_shape.setOnClickListener(this);
     }
 
     @Override
@@ -118,6 +122,9 @@ public class RegisteredActivity extends BaseAcitvity implements ICoolor_LRE.IVie
             case R.id.tv_yi:
                 Intent intent = new Intent(RegisteredActivity.this, LoginActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.iv_shape:
+                finish();
                 break;
                 default:
                     break;

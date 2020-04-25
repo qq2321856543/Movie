@@ -83,7 +83,6 @@ public class Search_MovieByKeyword_Activity extends BaseAcitvity implements ICoo
     @Override
     public void getSearch_MovieByKeywordSuccess(Search_MovieByKeywordBean movieByKeywordBean) {
         List<Search_MovieByKeywordBean.ResultBean> result = movieByKeywordBean.getResult();
-        //Log.i("kkk","size:"+result.size());
         if (result!=null){
             search_movieByKeywordAdapter.setData(result);
         }

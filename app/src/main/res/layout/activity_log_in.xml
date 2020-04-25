@@ -10,19 +10,27 @@
         android:layout_weight="4"
         android:background="@mipmap/back"
         android:layout_height="0dp">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:src="@mipmap/shape"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="登录"
-            android:layout_marginTop="37dp"
-            android:layout_marginLeft="100dp"
-            android:textColor="#FDFDFE"
-            android:textSize="16sp"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:id="@+id/iv_shape"
+                android:src="@mipmap/shape"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="登录"
+                android:layout_centerHorizontal="true"
+                android:layout_alignBottom="@id/iv_shape"
+                android:layout_marginTop="37dp"
+                android:layout_marginLeft="100dp"
+                android:textColor="#FDFDFE"
+                android:textSize="16sp"/>
+        </RelativeLayout>
+
     </LinearLayout>
     <RelativeLayout
         android:layout_width="match_parent"
@@ -45,7 +53,7 @@
             android:layout_height="44dp"
             android:layout_marginTop="10dp"
             android:hint="请输入密码"
-            android:password="true"
+            android:inputType="textPassword"
             android:textColor="#F9F9F9"
             android:text="2321856543"
             android:textColorHint="#F9F9F9"

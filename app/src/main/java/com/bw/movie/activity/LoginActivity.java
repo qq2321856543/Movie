@@ -22,6 +22,9 @@ import com.bw.movie.utils.EncryptUtil;
 import com.bw.movie.utils.HttpUtil;
 import com.bw.movie.utils.SPUtils;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import butterknife.BindView;
 
 public class LoginActivity extends BaseAcitvity implements ICoolor_LRE.IView, View.OnClickListener {
@@ -103,6 +106,7 @@ public class LoginActivity extends BaseAcitvity implements ICoolor_LRE.IView, Vi
                 if (HttpUtil.getInstance().isWifi(this)){
                     String string = pwd.getText().toString();
                     if (!TextUtils.isEmpty(email.getText().toString())&&!TextUtils.isEmpty(string)){
+
                         String pwd = EncryptUtil.encrypt(string);
                         BasePresenter presenter = getPresenter();
                         if (presenter!=null&&presenter instanceof ICoolor_LRE.IPresenter){
@@ -128,4 +132,7 @@ public class LoginActivity extends BaseAcitvity implements ICoolor_LRE.IView, Vi
                 default:
         }
     }
+
+
+
 }

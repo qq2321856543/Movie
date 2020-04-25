@@ -24,7 +24,7 @@
                 <!--android:src="@mipmap/ic_launcher"-->
                 <!--android:id="@+id/iv"-->
                 <!--android:scaleType="centerCrop"/>-->
-            <ImageView
+            <com.facebook.drawee.view.SimpleDraweeView
                 android:layout_width="100dp"
                 android:layout_height="130dp"
                 android:id="@+id/iv"

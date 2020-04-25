@@ -21,7 +21,7 @@ import java.util.List;
 public class MoreAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     Context context;
     private List<Movie_ReleaseMovieBean.ResultBean> list=new ArrayList<>();
-    private Onclick monclick;
+    private Oncli monclick;
 
     public MoreAdapter(Context context) {
         this.context = context;
@@ -56,10 +56,10 @@ public class MoreAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             }
         });
     }
-    public void SetOnclick(Onclick onclick){
+    public void SetOncli(Oncli onclick){
         monclick = onclick;
     }
-    public interface Onclick{
+    public interface Oncli{
         void click(int movieId);
     }
     @Override

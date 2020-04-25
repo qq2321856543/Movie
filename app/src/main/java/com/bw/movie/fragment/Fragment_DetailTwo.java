@@ -5,6 +5,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.VideoView;
 
 import com.bw.movie.R;
 import com.bw.movie.adapter.ShortFilmListAdapter;
@@ -51,6 +52,47 @@ public class Fragment_DetailTwo extends BaseFragment implements ICoolor_MoviesDe
         if (presenter!=null && presenter instanceof ICoolor_MoviesDetail.IPresenter){
             ((ICoolor_MoviesDetail.IPresenter)presenter).getMoviesDetail(movieId);
         }
+
+//        rv.addOnScrollListener(new RecyclerView.OnScrollListener() {
+//
+//            private int thisPosition = -1;
+//
+//            @Override
+//            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+//                super.onScrollStateChanged(recyclerView, newState);
+//                switch (newState) {
+//                    case RecyclerView.SCROLL_STATE_IDLE: //滚动停止
+//                        LinearLayoutManager layoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
+//                        if (layoutManager != null) {
+//                            int firstVisibleItem = layoutManager.findFirstVisibleItemPosition();
+//                            int lastVisibleItem = layoutManager.findLastVisibleItemPosition();
+//                            int eddVisibleItem = layoutManager.findLastCompletelyVisibleItemPosition();
+//                            if (eddVisibleItem == thisPosition) return;
+//                            thisPosition = eddVisibleItem;
+//                            int thisVideoView = eddVisibleItem - firstVisibleItem;
+//                            if (layoutManager != null && layoutManager.getChildAt(thisVideoView) != null
+//                                    && layoutManager.getChildAt(thisVideoView).findViewById(R.id.main_video) != null) {
+//                                VideoView videoView = layoutManager.getChildAt(thisVideoView).findViewById(R.id.main_video);
+//                                videoView.start();
+////                                LogUtils.loge("开始播放新视频");
+//                            }
+//                        }
+//                        break;
+//                    case RecyclerView.SCROLL_STATE_DRAGGING: //手指拖动
+//                        break;
+//                    case RecyclerView.SCROLL_STATE_SETTLING: //惯性滚动
+//                        break;
+//                }
+//            }
+//
+//            @Override
+//            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+//                super.onScrolled(recyclerView, dx, dy);
+//
+//
+//            }
+//        });
+
     }
 
     @Override

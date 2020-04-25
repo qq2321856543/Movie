@@ -20,7 +20,7 @@ import java.util.List;
 public class MorethreeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     Context context;
     private List<Movie_HotMovieBean.ResultBean> list=new ArrayList<>();
-    private Onclick monclick;
+    private Onclick1 monclick;
 
     public MorethreeAdapter(Context context) {
         this.context = context;
@@ -55,10 +55,10 @@ public class MorethreeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             }
         });
     }
-    public void SetOnclick(Onclick onclick){
+    public void SetOnclic(Onclick1 onclick){
         monclick = onclick;
     }
-    public interface Onclick{
+    public interface Onclick1{
         void click(int movieId);
     }
     @Override
