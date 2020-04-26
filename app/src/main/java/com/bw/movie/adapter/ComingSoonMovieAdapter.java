@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bw.movie.R;
@@ -25,6 +26,7 @@ public class ComingSoonMovieAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     Context context;
     private List<Movie_ComingSoonMovie.ResultBean> list=new ArrayList<>();
     private Onclick monclick;
+    private Onclick_ok monclick_ok;
 
     public ComingSoonMovieAdapter(Context context) {
         this.context = context;
@@ -58,11 +60,26 @@ public class ComingSoonMovieAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         ((ViewHolder)viewHolder).tv_name.setText(list.get(i).getName());
         //((ViewHolder)viewHolder).tv_shijian.setText(list.get(i).getReleaseTime()+"上映");
         ((ViewHolder)viewHolder).tv_count.setText(list.get(i).getWantSeeNum()+"人想看");
+        if (list.get(0).getWhetherReserve()==1){
+
+            ((ViewHolder)viewHolder).bt_ok.setText("已预约");
+        }else {
+            ((ViewHolder)viewHolder).bt_ok.setText("预约");
+
+        }
+
         //点击事件
         ((ViewHolder)viewHolder).rl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 monclick.click(list.get(i).getMovieId());
+            }
+        });
+        //预约点击
+        ((ViewHolder)viewHolder).bt_ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                monclick_ok.click(list.get(i).getMovieId());
             }
         });
     }
@@ -72,6 +89,13 @@ public class ComingSoonMovieAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     public interface Onclick{
         void click(int movieId);
     }
+    public void SetOnclick_ok(Onclick_ok onclick_ok){
+        monclick_ok = onclick_ok;
+    }
+    public interface Onclick_ok{
+        void click(int movieId);
+    }
+
     @Override
     public int getItemCount() {
         return list.size();

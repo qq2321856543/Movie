@@ -7,6 +7,7 @@ import com.bw.movie.bean.Movie_ComingSoonMovie;
 import com.bw.movie.bean.Movie_HotMovieBean;
 import com.bw.movie.bean.Movie_ReleaseMovieBean;
 import com.bw.movie.bean.Moview_MoviesDetail;
+import com.bw.movie.bean.RegisterBean;
 import com.bw.movie.icoolor.ICoolor_Movie;
 import com.bw.movie.model.Model_Movie;
 
@@ -83,6 +84,19 @@ public class Presenter_Movie extends BasePresenter implements ICoolor_Movie.IPre
                 IBaseView view = getView();
                 if (view!=null&&view instanceof ICoolor_Movie.IVew){
                     ((ICoolor_Movie.IVew)view).getMoviesDetailSuccess(moviesDetail);
+                }
+            }
+        });
+    }
+
+    @Override
+    public void getReserve(int movieId) {
+        model.getReserve(movieId, new ICoolor_Movie.ReserveCallback() {
+            @Override
+            public void getSuccess(RegisterBean registerBean) {
+                IBaseView view = getView();
+                if (view!=null&&view instanceof ICoolor_Movie.IVew){
+                    ((ICoolor_Movie.IVew)view).getReserveSuccess(registerBean);
                 }
             }
         });

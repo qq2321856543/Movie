@@ -39,6 +39,7 @@ import com.bw.movie.bean.Movie_ComingSoonMovie;
 import com.bw.movie.bean.Movie_HotMovieBean;
 import com.bw.movie.bean.Movie_ReleaseMovieBean;
 import com.bw.movie.bean.Moview_MoviesDetail;
+import com.bw.movie.bean.RegisterBean;
 import com.bw.movie.icoolor.ICoolor_Movie;
 import com.bw.movie.icoolor.ICoolor_MoviesDetail;
 import com.bw.movie.presenter.Presenter_Movie;
@@ -211,6 +212,16 @@ public class Fragment_Movie extends BaseFragment implements ICoolor_Movie.IVew, 
                 }
             }
         });
+        //点击预约购票
+        comingSoonMovieAdapter.SetOnclick_ok(new ComingSoonMovieAdapter.Onclick_ok() {
+            @Override
+            public void click(int movieId) {
+                BasePresenter presenter = getPresenter();
+                if (presenter!=null){
+                    ((Presenter_Movie)presenter).getReserve(movieId);
+                }
+            }
+        });
 
     }
 
@@ -269,6 +280,18 @@ public class Fragment_Movie extends BaseFragment implements ICoolor_Movie.IVew, 
         intent.putParcelableArrayListExtra("resultBeans",resultBeans);
 
         startActivity(intent);
+    }
+
+    //预约
+    @Override
+    public void getReserveSuccess(RegisterBean registerBean) {
+        String message = registerBean.getMessage();
+        if (message.equals("预约成功")){
+            Toast.makeText(getContext(), "预约成功!", Toast.LENGTH_SHORT).show();
+            comingSoonMovieAdapter.notifyDataSetChanged();
+        }else {
+            Toast.makeText(getContext(), "预约失败", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override

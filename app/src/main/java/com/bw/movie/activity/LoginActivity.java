@@ -81,6 +81,13 @@ public class LoginActivity extends BaseAcitvity implements ICoolor_LRE.IView, Vi
             LoginBean.ResultBean.UserInfoBean userInfo = result.getUserInfo();
             SPUtils.putString(this,SPUtils.USERINFO_NAME,SPUtils.USERINFO_KEY_USER_ID,String.valueOf(userId));
             SPUtils.putString(this,SPUtils.USERINFO_NAME,SPUtils.USERINFO_KEY_SESSION_ID,sessionId);
+
+            SPUtils.putString(this,SPUtils.USERINFO_NAME,"nickName",result.getUserInfo().getNickName());
+            SPUtils.putString(this,SPUtils.USERINFO_NAME,"birthday",result.getUserInfo().getBirthday()+"");
+            SPUtils.putString(this,SPUtils.USERINFO_NAME,"id",result.getUserInfo().getId()+"");
+            SPUtils.putString(this,SPUtils.USERINFO_NAME,"phone",result.getUserInfo().getPhone());
+            SPUtils.putString(this,SPUtils.USERINFO_NAME,"sex",result.getUserInfo().getSex()+"");
+            SPUtils.putString(this,SPUtils.USERINFO_NAME,"headPic",result.getUserInfo().getHeadPic());
             //跳转
             Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
             startActivity(intent);
@@ -106,7 +113,7 @@ public class LoginActivity extends BaseAcitvity implements ICoolor_LRE.IView, Vi
                 if (HttpUtil.getInstance().isWifi(this)){
                     String string = pwd.getText().toString();
                     if (!TextUtils.isEmpty(email.getText().toString())&&!TextUtils.isEmpty(string)){
-
+                        //boolean matches = isEmail.matches;
                         String pwd = EncryptUtil.encrypt(string);
                         BasePresenter presenter = getPresenter();
                         if (presenter!=null&&presenter instanceof ICoolor_LRE.IPresenter){
@@ -133,6 +140,9 @@ public class LoginActivity extends BaseAcitvity implements ICoolor_LRE.IView, Vi
         }
     }
 
+    private static class isEmail{
+       //static boolean matches = Pattern.compile("[1-9]\\d{7,10}@qq\\.com").matcher(email.getText().toString()).matches();
 
+    }
 
 }

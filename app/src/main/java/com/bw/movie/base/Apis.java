@@ -69,4 +69,9 @@ public interface Apis {
     //影视评价
     @GET("movie/v2/findAllMovieComment")
     Observable<YingPingBean> getYingPing(@Query("movieId") int movieId, @Query("page")int page, @Query("count")int count);
+
+    //预约
+    @POST("movie/v2/verify/reserve")
+    @FormUrlEncoded
+    Observable<RegisterBean> getReserve(@Field("movieId") int movieId);
 }

@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.bw.movie.R;
@@ -39,6 +40,8 @@ public class Fragment_DetailOne extends BaseFragment implements ICoolor_MoviesDe
     TextView tv_yanyuan;
     @BindView(R.id.rv_yanyuan)
     RecyclerView rv_yanyuan;
+    @BindView(R.id.sv)
+    ScrollView sv;
     private DirectorAdapter directorAdapter;
     private ActorAdapter actorAdapter;
 
@@ -73,6 +76,12 @@ public class Fragment_DetailOne extends BaseFragment implements ICoolor_MoviesDe
             ((ICoolor_MoviesDetail.IPresenter)presenter).getMoviesDetail(movieId);
         }
 
+        sv.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return true;
+            }
+        });
     }
 
 

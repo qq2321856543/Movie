@@ -51,12 +51,12 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:background="#141931"
-        android:layout_height="150dp">
+        android:layout_height="@dimen/dp170">
         <com.stx.xhb.xbanner.XBanner
             android:layout_width="340dp"
             android:id="@+id/xb"
             android:layout_centerHorizontal="true"
-            android:layout_height="match_parent">
+            android:layout_height="150dp">
 
         </com.stx.xhb.xbanner.XBanner>
         <TextView
@@ -64,7 +64,9 @@
             android:layout_height="wrap_content"
             android:id="@+id/tv_postion"
             android:textColor="#FDFDFE"
-            android:layout_toRightOf="@id/xb"/>
+            android:text="ewr"
+            android:layout_alignRight="@id/xb"
+            android:layout_below="@id/xb"/>
     </RelativeLayout>
 
     <RelativeLayout

@@ -1,6 +1,7 @@
 package com.bw.movie.adapter;
 
 import android.content.Context;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -47,6 +48,7 @@ public class ShortFilmListAdapter extends RecyclerView.Adapter<RecyclerView.View
         ((ViewHolder)viewHolder).vv.setVideoURI(Uri.parse(videoUrl));
         controller.setMediaPlayer(((ViewHolder)viewHolder).vv);
         ((ViewHolder)viewHolder).vv.setMediaController(controller);
+//        ((ViewHolder)viewHolder).vv.setBackgroundDrawable(new BitmapDrawable());
 
     }
 

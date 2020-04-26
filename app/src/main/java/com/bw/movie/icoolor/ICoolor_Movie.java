@@ -6,6 +6,7 @@ import com.bw.movie.bean.Movie_ComingSoonMovie;
 import com.bw.movie.bean.Movie_HotMovieBean;
 import com.bw.movie.bean.Movie_ReleaseMovieBean;
 import com.bw.movie.bean.Moview_MoviesDetail;
+import com.bw.movie.bean.RegisterBean;
 
 public interface ICoolor_Movie {
     interface IVew extends IBaseView{
@@ -19,6 +20,8 @@ public interface ICoolor_Movie {
         void getXbanner(BannerBean bannerBean);
         //电影详情
         void getMoviesDetailSuccess(Moview_MoviesDetail moviesDetail);
+        //预约
+        void getReserveSuccess(RegisterBean registerBean);
     }
     interface IPresenter{
         //正在热映
@@ -31,6 +34,8 @@ public interface ICoolor_Movie {
         void getXbanner();
         //电影详情
         void getMoviesDetail(int movieId);
+        //预约
+        void getReserve(int movieId);
     }
     interface IModel{
         //正在热映
@@ -43,6 +48,8 @@ public interface ICoolor_Movie {
         void getXbanner(BannerCallback bannerCallback);
         //电影详情
         void getMoviesDetail(int movieId,MoviesDetailCallback moviesDetailCallback);
+        //预约
+        void getReserve(int movieId,ReserveCallback reserveCallback);
     }
     interface ReleaseMovieCallback{
         void getSuccess(Movie_ReleaseMovieBean releaseMovieBean);
@@ -58,5 +65,8 @@ public interface ICoolor_Movie {
     }
     interface MoviesDetailCallback{
         void getSuccess(Moview_MoviesDetail moviesDetail);
+    }
+    interface ReserveCallback{
+        void getSuccess(RegisterBean registerBean);
     }
 }

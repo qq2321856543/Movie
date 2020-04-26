@@ -15,6 +15,7 @@ import com.bw.movie.bean.Movie_ComingSoonMovie;
 import com.bw.movie.bean.Movie_HotMovieBean;
 import com.bw.movie.bean.Movie_ReleaseMovieBean;
 import com.bw.movie.bean.Moview_MoviesDetail;
+import com.bw.movie.bean.RegisterBean;
 import com.bw.movie.icoolor.ICoolor_Movie;
 import com.bw.movie.presenter.Presenter_Movie;
 
@@ -77,6 +78,11 @@ public class Fragment_one extends BaseFragment implements ICoolor_Movie.IVew {
 
     @Override
     public void getMoviesDetailSuccess(Moview_MoviesDetail moviesDetail) {
+
+    }
+
+    @Override
+    public void getReserveSuccess(RegisterBean registerBean) {
 
     }
 }

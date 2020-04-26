@@ -5,6 +5,7 @@ import com.bw.movie.bean.Movie_ComingSoonMovie;
 import com.bw.movie.bean.Movie_HotMovieBean;
 import com.bw.movie.bean.Movie_ReleaseMovieBean;
 import com.bw.movie.bean.Moview_MoviesDetail;
+import com.bw.movie.bean.RegisterBean;
 import com.bw.movie.icoolor.ICoolor_Movie;
 import com.bw.movie.utils.HttpUtil;
 
@@ -152,5 +153,33 @@ public class Model_Movie implements ICoolor_Movie.IModel {
 
                    }
                });
+    }
+
+    @Override
+    public void getReserve(int movieId, final ICoolor_Movie.ReserveCallback reserveCallback) {
+        HttpUtil.getInstance().getApis().getReserve(movieId)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<RegisterBean>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(RegisterBean registerBean) {
+                        reserveCallback.getSuccess(registerBean);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 }
