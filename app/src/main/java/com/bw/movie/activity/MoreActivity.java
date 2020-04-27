@@ -11,6 +11,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.bw.movie.R;
@@ -30,7 +31,7 @@ import butterknife.BindView;
 /**
  * 更多
  */
-public class MoreActivity extends BaseAcitvity {
+public class MoreActivity extends BaseAcitvity implements View.OnClickListener {
 
     @BindView(R.id.iv_shape)
     ImageView iv_shape;
@@ -83,7 +84,26 @@ public class MoreActivity extends BaseAcitvity {
         vp.setAdapter(fragmentPageAdap);
         vp.setCurrentItem(i);
 
+        iv_shape.setOnClickListener(this);
+        iv_search.setOnClickListener(this);
+
     }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.iv_shape:
+                finish();
+                break;
+            case R.id.iv_search:
+                Intent intent = new Intent(MoreActivity.this, Search_MovieByKeyword_Activity.class);
+                startActivity(intent);
+                break;
+
+            default:
+        }
+    }
+
     public class FragmentPageAdap extends FragmentPagerAdapter{
 
         public FragmentPageAdap(FragmentManager fm) {

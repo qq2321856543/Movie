@@ -83,6 +83,11 @@ public class RegisteredActivity extends BaseAcitvity implements ICoolor_LRE.IVie
     }
 
     @Override
+    public void getWxSuccess(LoginBean loginBean) {
+
+    }
+
+    @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.bt_get:

@@ -37,6 +37,11 @@ public interface Apis {
     @FormUrlEncoded
     Observable<LoginBean> getLogin(@Field("email") String email,@Field("pwd") String pwd);
 
+    //微信登录
+    @POST("user/v1/weChatBindingLogin")
+    @FormUrlEncoded
+    Observable<LoginBean> getWx(@Field("code") String code);
+
     //修改密码
     @POST("user/v1/verify/modifyUserPwd")
     @FormUrlEncoded

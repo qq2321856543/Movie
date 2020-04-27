@@ -98,4 +98,32 @@ public class Model_LRE implements ICoolor_LRE.IModel {
                     }
                 });
     }
+
+    @Override
+    public void getWx(String code, final ICoolor_LRE.WxCallback wxCallback) {
+        HttpUtil.getInstance().getApis().getWx(code)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<LoginBean>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(LoginBean loginBean) {
+                        wxCallback.getSuccess(loginBean);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
 }

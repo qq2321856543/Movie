@@ -56,7 +56,6 @@ public class ComingSoonMovieAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         String imageUrl = list.get(i).getImageUrl();
         Uri uri = Uri.parse(imageUrl);
         ((ViewHolder)viewHolder).iv.setImageURI(uri);
-        //Glide.with(context).load(imageUrl).error(R.mipmap.ic_launcher).placeholder(R.mipmap.ic_launcher).into(((ViewHolder)viewHolder).iv);
         ((ViewHolder)viewHolder).tv_name.setText(list.get(i).getName());
         //((ViewHolder)viewHolder).tv_shijian.setText(list.get(i).getReleaseTime()+"上映");
         ((ViewHolder)viewHolder).tv_count.setText(list.get(i).getWantSeeNum()+"人想看");

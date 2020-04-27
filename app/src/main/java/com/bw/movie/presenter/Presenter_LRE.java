@@ -66,4 +66,17 @@ public class Presenter_LRE extends BasePresenter implements ICoolor_LRE.IPresent
             }
         });
     }
+
+    @Override
+    public void getWx(String code) {
+        model.getWx(code, new ICoolor_LRE.WxCallback() {
+            @Override
+            public void getSuccess(LoginBean loginBean) {
+                IBaseView view = getView();
+                if (view!=null&&view instanceof ICoolor_LRE.IView){
+                    ((ICoolor_LRE.IView)view).getWxSuccess(loginBean);
+                }
+            }
+        });
+    }
 }

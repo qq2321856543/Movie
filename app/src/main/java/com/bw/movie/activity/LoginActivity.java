@@ -11,8 +11,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bw.movie.R;
+import com.bw.movie.base.App;
 import com.bw.movie.base.BaseAcitvity;
 import com.bw.movie.base.BasePresenter;
+import com.bw.movie.base.WXCodeBean;
 import com.bw.movie.bean.EmailCodeBean;
 import com.bw.movie.bean.LoginBean;
 import com.bw.movie.bean.RegisterBean;
@@ -21,6 +23,11 @@ import com.bw.movie.presenter.Presenter_LRE;
 import com.bw.movie.utils.EncryptUtil;
 import com.bw.movie.utils.HttpUtil;
 import com.bw.movie.utils.SPUtils;
+import com.tencent.mm.opensdk.modelmsg.SendAuth;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -100,6 +107,11 @@ public class LoginActivity extends BaseAcitvity implements ICoolor_LRE.IView, Vi
     }
 
     @Override
+    public void getWxSuccess(LoginBean loginBean) {
+
+    }
+
+    @Override
     public void onClick(View v) {
         switch (v.getId()){
             //忘记密码
@@ -130,6 +142,7 @@ public class LoginActivity extends BaseAcitvity implements ICoolor_LRE.IView, Vi
                 break;
             //微信登录
             case R.id.ll_wx:
+                doWxLogin();
                 break;
              //没有帐号 注册
             case R.id.tv_zhu:
@@ -143,6 +156,33 @@ public class LoginActivity extends BaseAcitvity implements ICoolor_LRE.IView, Vi
     private static class isEmail{
        //static boolean matches = Pattern.compile("[1-9]\\d{7,10}@qq\\.com").matcher(email.getText().toString()).matches();
 
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (!EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this);
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        EventBus.getDefault().unregister(this);
+    }
+
+    private void doWxLogin() {
+        SendAuth.Req req = new SendAuth.Req();
+        req.scope = "snsapi_userinfo";
+        req.state = "wechat_sdk_demo_test";
+        App.getWxApi().sendReq(req);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
+    public void receiveWXCode(WXCodeBean wxCodeBean) {
+        Log.i("dj", "wxcode is " + wxCodeBean.getCode());
+        EventBus.getDefault().removeStickyEvent(wxCodeBean);
+        //TODO:调用wx登录接口
     }
 
 }

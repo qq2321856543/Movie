@@ -46,15 +46,15 @@ public class MainActivity extends BaseAcitvity {
             public void run() {
                 String string = SPUtils.getString(MainActivity.this, SPUtils.USERINFO_NAME, SPUtils.USERINFO_KEY_USER_ID);
                 String string1 = SPUtils.getString(MainActivity.this, SPUtils.USERINFO_NAME, SPUtils.USERINFO_KEY_SESSION_ID);
-                if (TextUtils.isEmpty(string)&&TextUtils.isEmpty(string1)){
+            //    if (TextUtils.isEmpty(string)&&TextUtils.isEmpty(string1)){
                     Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                     startActivity(intent);
                     finish();
-                }else {
-                    Intent intent = new Intent(MainActivity.this, HomeActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
+//                }else {
+//                    Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+//                    startActivity(intent);
+//                    finish();
+//                }
 
             }
         },3000);

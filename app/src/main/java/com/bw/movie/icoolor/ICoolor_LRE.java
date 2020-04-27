@@ -13,17 +13,21 @@ public interface ICoolor_LRE {
         void getLoginSuccess(LoginBean loginBean);
         //注册
         void getRegisterSuccess(RegisterBean registerBean);
+        //微信
+        void getWxSuccess(LoginBean loginBean);
 
     }
     interface IPresenter{
         void getEmailCode(String email);
         void getLogin(String email,String pwd);
         void getRegister(String nickName,String pwd,String email,String code);
+        void getWx(String code);
     }
     interface IModel{
         void getEmailCode(String email,EmailCodeCallback emailCodeCallback);
         void getLogin(String email,String pwd,LoginCallback loginCallback);
         void getRegister(String nickName,String pwd,String email,String code,RegisterCallback registerCallback);
+        void getWx(String code,WxCallback wxCallback);
     }
     interface EmailCodeCallback{
         void getSuccess(EmailCodeBean emailCodeBean);
@@ -33,5 +37,8 @@ public interface ICoolor_LRE {
     }
     interface RegisterCallback{
         void getSuccess(RegisterBean registerBean);
+    }
+    interface WxCallback{
+        void getSuccess(LoginBean loginBean);
     }
 }

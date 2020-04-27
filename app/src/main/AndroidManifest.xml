@@ -68,6 +68,15 @@
         <meta-data
             android:name="design_height_in_dp"
             android:value="640"/>
+
+        <activity
+            android:name=".activity.WXEntryActivity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:exported="true"
+            android:taskAffinity="com.bw.movie"
+            android:launchMode="singleTask">
+        </activity>
     </application>
 
 </manifest>
