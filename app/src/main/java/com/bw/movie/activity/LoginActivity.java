@@ -95,6 +95,9 @@ public class LoginActivity extends BaseAcitvity implements ICoolor_LRE.IView, Vi
             SPUtils.putString(this,SPUtils.USERINFO_NAME,"phone",result.getUserInfo().getPhone());
             SPUtils.putString(this,SPUtils.USERINFO_NAME,"sex",result.getUserInfo().getSex()+"");
             SPUtils.putString(this,SPUtils.USERINFO_NAME,"headPic",result.getUserInfo().getHeadPic());
+            SPUtils.putString(this,SPUtils.USERINFO_NAME,"email",email.getText().toString());
+            Log.i("fff","userId"+userId);
+            Log.i("fff","sessionId"+sessionId);
             //跳转
             Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
             startActivity(intent);

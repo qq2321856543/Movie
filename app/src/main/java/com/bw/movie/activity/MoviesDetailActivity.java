@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bw.movie.R;
@@ -18,10 +19,13 @@ import com.bw.movie.adapter.ComingSoonMovieAdapter;
 import com.bw.movie.base.BaseAcitvity;
 import com.bw.movie.base.BasePresenter;
 import com.bw.movie.bean.Moview_MoviesDetail;
+import com.bw.movie.bean.RegisterBean;
 import com.bw.movie.fragment.Fragment_DetailFour;
 import com.bw.movie.fragment.Fragment_DetailOne;
 import com.bw.movie.fragment.Fragment_DetailThree;
 import com.bw.movie.fragment.Fragment_DetailTwo;
+import com.bw.movie.icoolor.ICoolor_FollowMovie;
+import com.bw.movie.presenter.Presenter_FollowMovie;
 import com.bw.movie.utils.SPUtils;
 import com.bw.movie.view.DrawerLayout;
 
@@ -33,7 +37,7 @@ import java.util.Date;
 
 import butterknife.BindView;
 
-public class MoviesDetailActivity extends BaseAcitvity {
+public class MoviesDetailActivity extends BaseAcitvity implements ICoolor_FollowMovie.IVew {
 
     @BindView(R.id.iv_max)
     ImageView iv_max;
@@ -66,7 +70,7 @@ public class MoviesDetailActivity extends BaseAcitvity {
     ArrayList<String> tabs = new ArrayList<>();
     @Override
     protected BasePresenter initPresenter() {
-        return null;
+        return new Presenter_FollowMovie(this);
     }
 
     @Override
@@ -89,7 +93,7 @@ public class MoviesDetailActivity extends BaseAcitvity {
         });
         Intent intent = getIntent();
         ArrayList<Moview_MoviesDetail.ResultBean> resultBeans = intent.getParcelableArrayListExtra("resultBeans");
-        Moview_MoviesDetail.ResultBean list = resultBeans.get(0);
+        final Moview_MoviesDetail.ResultBean list = resultBeans.get(0);
         Glide.with(this).load(resultBeans.get(0).getImageUrl()).error(R.mipmap.ic_launcher).placeholder(R.mipmap.ic_launcher).into(iv_max);
         tv_ping.setText("评分："+resultBeans.get(0).getScore()+"分");
         tv_count.setText("评论 "+list.getCommentNum()+"万条");
@@ -106,11 +110,26 @@ public class MoviesDetailActivity extends BaseAcitvity {
        // tv_riqi.setText(list.getReleaseTime()+"");
         tv_diqu.setText(list.getPlaceOrigin());
         int whetherFollow = list.getWhetherFollow();
+
         if (whetherFollow==1){
             tv_guanzhu.setText("已关注");
+            iv_xin.setImageResource(R.mipmap.xin);
         }else {
+            iv_xin.setImageResource(R.mipmap.baixin);
             tv_guanzhu.setText("关注");
         }
+        iv_xin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i("uuu","setOnClickListener=");
+
+                BasePresenter presenter = getPresenter();
+                if (presenter!=null){
+                    ((ICoolor_FollowMovie.IPresenter)presenter).getMoviesDetail(list.getMovieId());
+                }
+
+            }
+        });
         //Fragment设置数据
         int movieId = list.getMovieId();
 //        EventBus.getDefault().postSticky(movieId);
@@ -143,6 +162,73 @@ public class MoviesDetailActivity extends BaseAcitvity {
         tab.setupWithViewPager(vp);
 
     }
+
+    @Override
+    public void getMoviesDetailSuccess(Moview_MoviesDetail moviesDetail) {
+        Moview_MoviesDetail.ResultBean result = moviesDetail.getResult();
+        Log.i("fff","id="+result.getMovieId());
+
+        int whetherFollow = result.getWhetherFollow();
+        if (whetherFollow==1){
+//            tv_guanzhu.setText("已关注");
+//            iv_xin.setImageResource(R.mipmap.xin);
+            Log.i("uuu","getMoviesDetailSuccess="+1);
+            BasePresenter presenter = getPresenter();
+            if (presenter!=null){
+                ((ICoolor_FollowMovie.IPresenter)presenter).getCancelFollowMovie(result.getMovieId());
+            }
+        }else {
+
+//            iv_xin.setImageResource(R.mipmap.baixin);
+//            tv_guanzhu.setText("关注");
+            BasePresenter presenter = getPresenter();
+            if (presenter!=null){
+                ((ICoolor_FollowMovie.IPresenter)presenter).getFollowMovieSuccess(result.getMovieId());
+
+            }
+        }
+    }
+
+    @Override
+    public void getFollowMovieSuccess(RegisterBean registerBean) {
+        String status = registerBean.getStatus();
+        Log.i("uuu","getFollowMovieSuccess");
+
+        if (status.equals("0000")){
+            tv_guanzhu.setText("已关注");
+            iv_xin.setImageResource(R.mipmap.xin);
+            Toast.makeText(this, "关注成功", Toast.LENGTH_SHORT).show();
+            Log.i("uuu","getFollowMovieSuccess关注成功");
+
+        }else {
+            iv_xin.setImageResource(R.mipmap.baixin);
+            tv_guanzhu.setText("关注");
+            Toast.makeText(this, "关注失败", Toast.LENGTH_SHORT).show();
+            Log.i("uuu","getFollowMovieSuccess关注失败");
+
+        }
+    }
+
+    @Override
+    public void getCancelFollowMovie(RegisterBean registerBean) {
+        String status = registerBean.getStatus();
+        Log.i("uuu","getCancelFollowMovie");
+
+        if (status.equals("0000")){
+            tv_guanzhu.setText("关注");
+            iv_xin.setImageResource(R.mipmap.baixin);
+            Toast.makeText(this, "取消关注成功", Toast.LENGTH_SHORT).show();
+            Log.i("uuu","getCancelFollowMovie取消关注成功");
+
+        }else {
+            iv_xin.setImageResource(R.mipmap.xin);
+            tv_guanzhu.setText("取消关注");
+            Toast.makeText(this, "取消关注失败", Toast.LENGTH_SHORT).show();
+            Log.i("uuu","getCancelFollowMovie取消关注失败");
+
+        }
+    }
+
     public class FragmentPageAdap extends FragmentPagerAdapter {
 
         public FragmentPageAdap(FragmentManager fm) {

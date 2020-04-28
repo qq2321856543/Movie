@@ -1,5 +1,6 @@
 package com.bw.movie.fragment;
 
+import android.util.Log;
 import android.view.View;
 
 import com.bw.movie.R;
@@ -24,6 +25,7 @@ public class Fragment_Movietheater extends BaseFragment {
 
     @Override
     protected void initData() {
+        Log.i("ppp","Two");
 
     }
 }

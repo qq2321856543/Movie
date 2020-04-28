@@ -89,9 +89,9 @@
             android:layout_marginLeft="@dimen/dp10"/>
         <ImageView
             android:id="@+id/iv_xin"
-            android:layout_width="@dimen/dp20"
-            android:layout_height="@dimen/dp19"
-            android:src="@mipmap/xin"
+            android:layout_width="20dp"
+            android:layout_height="19dp"
+            android:src="@mipmap/baixin"
             android:layout_alignParentRight="true"
             android:layout_alignBottom="@id/tv_name"
             android:layout_marginRight="@dimen/dp29"/>

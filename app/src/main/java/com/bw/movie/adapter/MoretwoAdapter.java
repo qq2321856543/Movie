@@ -55,6 +55,13 @@ public class MoretwoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         ((ViewHolder)viewHolder).tv_name.setText(list.get(i).getName());
         //((ViewHolder)viewHolder).tv_shijian.setText(list.get(i).getReleaseTime()+"上映");
         ((ViewHolder)viewHolder).tv_count.setText(list.get(i).getWantSeeNum()+"人想看");
+        if (list.get(0).getWhetherReserve()==1){
+
+            ((ViewHolder)viewHolder).bt_ok.setText("已预约");
+        }else {
+            ((ViewHolder)viewHolder).bt_ok.setText("预约");
+
+        }
         //点击事件
         ((ViewHolder)viewHolder).rl.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -9,6 +9,7 @@ import com.bw.movie.bean.Movie_ReleaseMovieBean;
 import com.bw.movie.bean.Moview_MoviesDetail;
 import com.bw.movie.bean.RegisterBean;
 import com.bw.movie.bean.Search_MovieByKeywordBean;
+import com.bw.movie.bean.UserFollowMovieBean;
 import com.bw.movie.bean.YingPingBean;
 
 import io.reactivex.Observable;
@@ -79,4 +80,17 @@ public interface Apis {
     @POST("movie/v2/verify/reserve")
     @FormUrlEncoded
     Observable<RegisterBean> getReserve(@Field("movieId") int movieId);
+
+    //关注
+    @GET("movie/v1/verify/followMovie")
+    Observable<RegisterBean> getFollowMovie(@Query("movieId") int movieId);
+
+    //取消关注
+    @GET("movie/v1/verify/cancelFollowMovie")
+    Observable<RegisterBean> getCancelFollowMovie(@Query("movieId") int movieId);
+
+    //用户关注列表
+    @GET("user/v2/verify/findUserFollowMovieList")
+    Observable<UserFollowMovieBean> getUserFollowMovie(@Query("page") int page,@Query("count") int count);
+
 }
