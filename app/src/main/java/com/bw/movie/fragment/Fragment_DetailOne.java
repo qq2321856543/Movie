@@ -75,7 +75,12 @@ public class Fragment_DetailOne extends BaseFragment implements ICoolor_MoviesDe
             Log.i("qqq","presenter");
             ((ICoolor_MoviesDetail.IPresenter)presenter).getMoviesDetail(movieId);
         }
-
+//        rv_yanyuan.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                return true;
+//            }
+//        });
         sv.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {

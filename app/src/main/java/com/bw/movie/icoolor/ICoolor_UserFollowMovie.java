@@ -20,7 +20,7 @@ public interface ICoolor_UserFollowMovie {
     interface IModel{
 
         //用户关注
-        void getUserFollowMovie(int page,int count,UserFollowMovieBean userFollowMovieBean);
+        void getUserFollowMovie(int page,int count,UserFollowMovieCallback userFollowMovieCallback);
     }
 
     interface UserFollowMovieCallback{

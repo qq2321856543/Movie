@@ -39,7 +39,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.MyActivity"></activity>
+        <activity android:name=".activity.UserFollowMovieActivity"></activity>
+        <activity android:name=".activity.MyActivity" />
         <activity android:name=".activity.MoreActivity" />
         <activity android:name=".activity.MoviesDetailActivity" />
         <activity android:name=".activity.Search_MovieByKeyword_Activity" />
@@ -76,7 +77,7 @@
             android:label="@string/app_name"
             android:launchMode="singleTask"
             android:taskAffinity="com.bw.movie"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
     </application>
 
 </manifest>

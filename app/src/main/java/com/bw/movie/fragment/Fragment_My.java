@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.bw.movie.R;
 import com.bw.movie.activity.MyActivity;
+import com.bw.movie.activity.UserFollowMovieActivity;
 import com.bw.movie.base.BaseFragment;
 import com.bw.movie.base.BasePresenter;
 import com.bw.movie.utils.SPUtils;
@@ -87,7 +88,8 @@ public class Fragment_My extends BaseFragment implements View.OnClickListener {
                 startActivity(intent);
                 break;
             case R.id.iv_wodeguanzhu:
-
+                Intent intent1 = new Intent(getContext(), UserFollowMovieActivity.class);
+                startActivity(intent1);
                 break;
 
                 default:

@@ -15,5 +15,5 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/iv"
         android:layout_centerHorizontal="true"
-        />
+        android:textColor="#FDFDFE"/>
 </RelativeLayout>
