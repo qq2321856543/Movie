@@ -1,12 +1,16 @@
 package com.bw.movie.base;
 
 import com.bw.movie.bean.BannerBean;
+import com.bw.movie.bean.CinemaByRegionBean;
 import com.bw.movie.bean.EmailCodeBean;
 import com.bw.movie.bean.LoginBean;
 import com.bw.movie.bean.Movie_ComingSoonMovie;
 import com.bw.movie.bean.Movie_HotMovieBean;
 import com.bw.movie.bean.Movie_ReleaseMovieBean;
 import com.bw.movie.bean.Moview_MoviesDetail;
+import com.bw.movie.bean.NearbyCinemasBean;
+import com.bw.movie.bean.RecommendCinemasBean;
+import com.bw.movie.bean.RegionListBean;
 import com.bw.movie.bean.RegisterBean;
 import com.bw.movie.bean.Search_MovieByKeywordBean;
 import com.bw.movie.bean.UserFollowMovieBean;
@@ -93,4 +97,19 @@ public interface Apis {
     @GET("user/v2/verify/findUserFollowMovieList")
     Observable<UserFollowMovieBean> getUserFollowMovie(@Query("page") int page,@Query("count") int count);
 
+    //推荐影院
+    @GET("cinema/v1/findRecommendCinemas")
+    Observable<RecommendCinemasBean> getRecommendCinemasBean(@Query("page") int page,@Query("count") int count);
+
+    //附近影院
+    @GET("cinema/v1/findNearbyCinemas")
+    Observable<NearbyCinemasBean> getNearbyCinemasBean(@Query("longitude") String longitude,@Query("latitude") String latitude,@Query("page") int page,@Query("count") int count);
+
+    //根据区域查询影院
+    @GET("cinema/v2/findCinemaByRegion")
+    Observable<CinemaByRegionBean> getCinemaByRegion(@Query("regionId") int regionId);
+
+    //查询区域列表
+    @GET("tool/v2/findRegionList")
+    Observable<RegionListBean> getRegionList();
 }

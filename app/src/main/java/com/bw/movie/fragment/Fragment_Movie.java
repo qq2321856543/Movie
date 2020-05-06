@@ -45,6 +45,7 @@ import com.bw.movie.icoolor.ICoolor_MoviesDetail;
 import com.bw.movie.presenter.Presenter_Movie;
 import com.bw.movie.presenter.Presenter_MoviesDetail;
 import com.bw.movie.utils.HttpUtil;
+import com.bw.movie.utils.SPUtils;
 import com.stx.xhb.xbanner.XBanner;
 
 import java.text.SimpleDateFormat;
@@ -341,6 +342,8 @@ public class Fragment_Movie extends BaseFragment implements ICoolor_Movie.IVew, 
                 aMapLocation.getLocationType();//获取当前定位结果来源，如网络定位结果，详见官方定位类型表
                 aMapLocation.getLatitude();//获取纬度
                 aMapLocation.getLongitude();//获取经度
+                SPUtils.putString(getContext(),SPUtils.USERINFO_NAME,"jing",aMapLocation.getLatitude()+"");
+                SPUtils.putString(getContext(),SPUtils.USERINFO_NAME,"wei",aMapLocation.getLongitude()+"");
                 aMapLocation.getAccuracy();//获取精度信息
                 SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 Date date = new Date(aMapLocation.getTime());
@@ -350,6 +353,8 @@ public class Fragment_Movie extends BaseFragment implements ICoolor_Movie.IVew, 
                 aMapLocation.getProvince();//省信息
                 aMapLocation.getCity();//城市信息
                 aMapLocation.getDistrict();//城区信息
+                SPUtils.putString(getContext(),SPUtils.USERINFO_NAME,"diqu",aMapLocation.getDistrict()+"");
+
                 aMapLocation.getStreet();//街道信息
                 aMapLocation.getStreetNum();//街道门牌号信息
                 aMapLocation.getCityCode();//城市编码

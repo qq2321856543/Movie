@@ -78,8 +78,7 @@ public class LoginActivity extends BaseAcitvity implements ICoolor_LRE.IView, Vi
 
     @Override
     public void getLoginSuccess(LoginBean loginBean) {
-        Log.i("xxx",""+loginBean.getMessage());
-        Toast.makeText(this, "登录成功"+loginBean.getMessage()+loginBean.getStatus(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "登录成功", Toast.LENGTH_SHORT).show();
         if (loginBean.getMessage().equals("登陆成功")){
             Toast.makeText(this, "登陆成功", Toast.LENGTH_SHORT).show();
             LoginBean.ResultBean result = loginBean.getResult();
