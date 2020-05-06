@@ -48,12 +48,12 @@ public class MorethreeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         ((ViewHolder)viewHolder).tv_zhu.setText("主演: "+list.get(i).getStarring());
         ((ViewHolder)viewHolder).tv_ping.setText("评分: "+list.get(i).getScore()+"分");
         //点击事件
-        ((ViewHolder)viewHolder).bt_ok.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                monclick.click(list.get(i).getMovieId());
-            }
-        });
+//        ((ViewHolder)viewHolder).bt_ok.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                monclick.click(list.get(i).getMovieId());
+//            }
+//        });
     }
     public void SetOnclic(Onclick1 onclick){
         monclick = onclick;

@@ -17,20 +17,14 @@
         android:layout_marginLeft="@dimen/dp10"
         android:text="冷月女身"
         android:textColor="#ffffff"
+        android:layout_alignBottom="@id/ff"
         android:layout_toRightOf="@+id/ying_ping_img"
         android:layout_marginTop="@dimen/dp22"
         android:id="@+id/ying_ping_name"
         android:layout_height="wrap_content" />
+
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_below="@+id/ying_ping_name"
-        android:textColor="#ffffff"
-        android:id="@+id/ying_ping_fen"
-        android:layout_toRightOf="@id/ying_ping_img"
-        android:layout_marginLeft="@dimen/dp22"
-        android:text="啊啊啊"
-        android:layout_height="wrap_content" />
-    <TextView
+        android:id="@+id/ff"
         android:layout_width="wrap_content"
         android:text="04-24 09:15"
         android:layout_marginTop="@dimen/dp30"

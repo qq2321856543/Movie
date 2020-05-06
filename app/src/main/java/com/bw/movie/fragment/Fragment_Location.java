@@ -1,10 +1,12 @@
 package com.bw.movie.fragment;
 
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.bw.movie.R;
+import com.bw.movie.activity.CinemaInfoActivity;
 import com.bw.movie.adapter.OneAdapter;
 import com.bw.movie.adapter.TwoAdapter;
 import com.bw.movie.base.BaseFragment;
@@ -63,12 +65,15 @@ public class Fragment_Location extends BaseFragment implements ICoolor_CinemaByR
         rvv.setAdapter(twoAdapter);
         twoAdapter.SetOn(new TwoAdapter.Onclick() {
             @Override
-            public void Click(int postion) {
+            public void Click(int postion,int id) {
                 for (CinemaByRegionBean.ResultBean resultBean:result){
                     resultBean.setIs(false);
                 }
                 result.get(postion).setIs(true);
                 twoAdapter.notifyDataSetChanged();
+                Intent intent = new Intent(getContext(), CinemaInfoActivity.class);
+                intent.putExtra("id",id);
+                startActivity(intent);
             }
         });
     }

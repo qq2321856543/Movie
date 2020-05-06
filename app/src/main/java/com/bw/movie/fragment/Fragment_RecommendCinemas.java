@@ -1,11 +1,13 @@
 package com.bw.movie.fragment;
 
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 
 import com.bw.movie.R;
+import com.bw.movie.activity.CinemaInfoActivity;
 import com.bw.movie.adapter.RecommendCinemasAdapter;
 import com.bw.movie.base.BaseFragment;
 import com.bw.movie.base.BasePresenter;
@@ -45,10 +47,20 @@ public class Fragment_RecommendCinemas extends BaseFragment implements ICoolor_R
 
     @Override
     public void getRecommendCinemasSuccess(RecommendCinemasBean recommendCinemasBean) {
-        List<RecommendCinemasBean.ResultBean> result = recommendCinemasBean.getResult();
+        final List<RecommendCinemasBean.ResultBean> result = recommendCinemasBean.getResult();
         RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false);
         rv.setLayoutManager(layoutManager);
         RecommendCinemasAdapter recommendCinemasAdapter = new RecommendCinemasAdapter(getContext(), result);
         rv.setAdapter(recommendCinemasAdapter);
+        //点击跳转影院详情
+        recommendCinemasAdapter.Onclick(new RecommendCinemasAdapter.SetOn() {
+            @Override
+            public void click(int id) {
+                Intent intent = new Intent(getContext(), CinemaInfoActivity.class);
+                intent.putExtra("id",id);
+                startActivity(intent);
+
+            }
+        });
     }
 }

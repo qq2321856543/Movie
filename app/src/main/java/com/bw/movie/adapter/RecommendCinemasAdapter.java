@@ -29,6 +29,7 @@ public class RecommendCinemasAdapter extends RecyclerView.Adapter<RecyclerView.V
 
     Context context;
     List<RecommendCinemasBean.ResultBean> list;
+    private SetOn msetOn;
 
     public RecommendCinemasAdapter(Context context, List<RecommendCinemasBean.ResultBean> list) {
         this.context = context;
@@ -50,6 +51,18 @@ public class RecommendCinemasAdapter extends RecyclerView.Adapter<RecyclerView.V
         ((ViewHolder)viewHolder).iv.setImageURI(uri);
         ((ViewHolder)viewHolder).tv_name.setText(list.get(i).getName());
         ((ViewHolder)viewHolder).tv_dao.setText(list.get(i).getAddress());
+        ((ViewHolder)viewHolder).rl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                msetOn.click(list.get(i).getId());
+            }
+        });
+    }
+    public void Onclick(SetOn setOn){
+        msetOn = setOn;
+    }
+    public interface SetOn{
+        void click(int id);
     }
 
 

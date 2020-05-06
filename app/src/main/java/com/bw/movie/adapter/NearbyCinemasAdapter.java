@@ -20,6 +20,7 @@ public class NearbyCinemasAdapter extends RecyclerView.Adapter<RecyclerView.View
 
     Context context;
     List<NearbyCinemasBean.ResultBean> list;
+    private Onclick monclick;
 
     public NearbyCinemasAdapter(Context context, List<NearbyCinemasBean.ResultBean> list) {
         this.context = context;
@@ -42,6 +43,18 @@ public class NearbyCinemasAdapter extends RecyclerView.Adapter<RecyclerView.View
         ((ViewHolder)viewHolder).tv_name.setText(list.get(i).getName());
         ((ViewHolder)viewHolder).tv_dao.setText(list.get(i).getAddress());
         ((ViewHolder)viewHolder).juli.setText(list.get(i).getDistance()+"km");
+        ((ViewHolder)viewHolder).rl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                monclick.click(list.get(i).getId());
+            }
+        });
+    }
+    public void SetOnclick(Onclick onclick){
+        monclick = onclick;
+    }
+    public interface Onclick{
+        void click(int id);
     }
 
 

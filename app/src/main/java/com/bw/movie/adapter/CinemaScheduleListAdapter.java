@@ -7,26 +7,25 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bw.movie.R;
-import com.bw.movie.bean.Movie_ComingSoonMovie;
+import com.bw.movie.bean.CinemaScheduleListBean;
 import com.bw.movie.bean.Movie_ReleaseMovieBean;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MoreAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class CinemaScheduleListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     Context context;
-    private List<Movie_ReleaseMovieBean.ResultBean> list=new ArrayList<>();
+    private List<CinemaScheduleListBean.ResultBean> list=new ArrayList<>();
     private Oncli monclick;
 
-    public MoreAdapter(Context context) {
+    public CinemaScheduleListAdapter(Context context) {
         this.context = context;
     }
-    public void setData(List<Movie_ReleaseMovieBean.ResultBean> mlist){
+    public void setData(List<CinemaScheduleListBean.ResultBean> mlist){
         list = mlist;
         notifyDataSetChanged();
     }
@@ -34,7 +33,7 @@ public class MoreAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = View.inflate(context, R.layout.item_more, null);
+        View view = View.inflate(context, R.layout.item_cinemaschedulelist, null);
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }
@@ -49,12 +48,12 @@ public class MoreAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         ((ViewHolder)viewHolder).tv_zhu.setText("主演: "+list.get(i).getStarring());
         ((ViewHolder)viewHolder).tv_ping.setText("评分: "+list.get(i).getScore()+"分");
         //点击事件
-//        ((ViewHolder)viewHolder).bt_ok.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                monclick.click(list.get(i).getMovieId());
-//            }
-//        });
+        ((ViewHolder)viewHolder).bt_ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                monclick.click(list.get(i).getMovieId());
+            }
+        });
     }
     public void SetOncli(Oncli onclick){
         monclick = onclick;

@@ -43,7 +43,7 @@ public class TwoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         ((ViewHolder)viewHolder).tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                monclick.Click(i);
+                monclick.Click(i,list.get(i).getId());
             }
         });
     }
@@ -51,7 +51,7 @@ public class TwoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         monclick = onclick;
     }
     public interface Onclick{
-        void Click(int postion);
+        void Click(int postion,int id);
     }
 
     @Override
