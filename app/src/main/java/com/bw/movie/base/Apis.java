@@ -12,6 +12,7 @@ import com.bw.movie.bean.Movie_ComingSoonMovie;
 import com.bw.movie.bean.Movie_HotMovieBean;
 import com.bw.movie.bean.Movie_ReleaseMovieBean;
 import com.bw.movie.bean.Moview_MoviesDetail;
+import com.bw.movie.bean.MyMovieCommentListBean;
 import com.bw.movie.bean.NearbyCinemasBean;
 import com.bw.movie.bean.RecommendCinemasBean;
 import com.bw.movie.bean.RegionListBean;
@@ -155,4 +156,8 @@ public interface Apis {
     @POST("movie/v1/verify/movieComment")
     @FormUrlEncoded
     Observable<LoginBean> getMovieComment(@Field("movieId") int movieId,@Field("commentContent") String commentContent,@Field("score") double score);
+
+    //查询我对电影的评论列表
+    @GET("user/v2/verify/findMyMovieCommentList")
+    Observable<MyMovieCommentListBean> getMyMovieCommentList(@Query("page") int page,@Query("count") int count);
 }

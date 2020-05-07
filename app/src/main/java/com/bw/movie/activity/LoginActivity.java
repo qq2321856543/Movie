@@ -78,7 +78,6 @@ public class LoginActivity extends BaseAcitvity implements ICoolor_LRE.IView, Vi
 
     @Override
     public void getLoginSuccess(LoginBean loginBean) {
-        Toast.makeText(this, "登录成功", Toast.LENGTH_SHORT).show();
         if (loginBean.getMessage().equals("登陆成功")){
             Toast.makeText(this, "登陆成功", Toast.LENGTH_SHORT).show();
             LoginBean.ResultBean result = loginBean.getResult();
@@ -123,7 +122,6 @@ public class LoginActivity extends BaseAcitvity implements ICoolor_LRE.IView, Vi
                 break;
             //点击登录
             case R.id.bt_deng:
-                Toast.makeText(this, "跳转", Toast.LENGTH_SHORT).show();
                 if (HttpUtil.getInstance().isWifi(this)){
                     String string = pwd.getText().toString();
                     if (!TextUtils.isEmpty(email.getText().toString())&&!TextUtils.isEmpty(string)){
@@ -132,7 +130,6 @@ public class LoginActivity extends BaseAcitvity implements ICoolor_LRE.IView, Vi
                         BasePresenter presenter = getPresenter();
                         if (presenter!=null&&presenter instanceof ICoolor_LRE.IPresenter){
                             ((ICoolor_LRE.IPresenter)presenter).getLogin(email.getText().toString(),pwd);
-                            Toast.makeText(this, "有网络跳转", Toast.LENGTH_SHORT).show();
 
                         }
                     }else {
