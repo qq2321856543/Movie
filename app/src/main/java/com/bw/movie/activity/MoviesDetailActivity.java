@@ -10,6 +10,7 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -66,6 +67,10 @@ public class MoviesDetailActivity extends BaseAcitvity implements ICoolor_Follow
     TabLayout tab;
     @BindView(R.id.vp)
     ViewPager vp;
+    @BindView(R.id.bt_xieyingping)
+    Button bt_xieyingping;
+    @BindView(R.id.bt_xuanzuogoupiao)
+    Button bt_xuanzuogoupiao;
 
     ArrayList<Fragment> fragmentList = new ArrayList<>();
     ArrayList<String> tabs = new ArrayList<>();
@@ -91,6 +96,9 @@ public class MoviesDetailActivity extends BaseAcitvity implements ICoolor_Follow
 
     @Override
     protected void initData() {
+//        bt_xieyingping.setOnClickListener(this);
+  //      bt_xuanzuogoupiao.setOnClickListener(this);
+
         iv_shap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -100,6 +108,7 @@ public class MoviesDetailActivity extends BaseAcitvity implements ICoolor_Follow
         Intent intent = getIntent();
         ArrayList<Moview_MoviesDetail.ResultBean> resultBeans = intent.getParcelableArrayListExtra("resultBeans");
         final Moview_MoviesDetail.ResultBean list = resultBeans.get(0);
+
         Glide.with(this).load(resultBeans.get(0).getImageUrl()).error(R.mipmap.ic_launcher).placeholder(R.mipmap.ic_launcher).into(iv_max);
         tv_ping.setText("评分："+resultBeans.get(0).getScore()+"分");
         tv_count.setText("评论 "+list.getCommentNum()+"万条");
@@ -166,7 +175,22 @@ public class MoviesDetailActivity extends BaseAcitvity implements ICoolor_Follow
         FragmentPageAdap fragmentPageAdap = new FragmentPageAdap(getSupportFragmentManager());
         vp.setAdapter(fragmentPageAdap);
         tab.setupWithViewPager(vp);
+        bt_xieyingping.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MoviesDetailActivity.this, MovieCommentActivity.class);
+                intent.putExtra("id",list.getMovieId());
+                intent.putExtra("name",list.getName());
+                startActivity(intent);
+            }
+        });
+        //TODO:选座购票
+        bt_xuanzuogoupiao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+            }
+        });
     }
 
     @Override
@@ -234,6 +258,8 @@ public class MoviesDetailActivity extends BaseAcitvity implements ICoolor_Follow
 
         }
     }
+
+
 
     public class FragmentPageAdap extends FragmentPagerAdapter {
 

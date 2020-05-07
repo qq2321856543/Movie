@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.bw.movie.R;
 import com.bw.movie.activity.MyActivity;
 import com.bw.movie.activity.UserFollowMovieActivity;
+import com.bw.movie.activity.UserReserveActivity;
 import com.bw.movie.base.BaseFragment;
 import com.bw.movie.base.BasePresenter;
 import com.bw.movie.utils.SPUtils;
@@ -67,6 +68,7 @@ public class Fragment_My extends BaseFragment implements View.OnClickListener {
     protected void initData() {
         rl1.setOnClickListener(this);
         iv_wodeguanzhu.setOnClickListener(this);
+        ll_wodeyuyue.setOnClickListener(this);
 
         String nickName = SPUtils.getString(getContext(), SPUtils.USERINFO_NAME, "nickName");
 
@@ -91,7 +93,9 @@ public class Fragment_My extends BaseFragment implements View.OnClickListener {
                 Intent intent1 = new Intent(getContext(), UserFollowMovieActivity.class);
                 startActivity(intent1);
                 break;
-
+            case R.id.ll_wodeyuyue:
+                Intent intent2 = new Intent(getContext(), UserReserveActivity.class);
+                startActivity(intent2);
                 default:
         }
     }

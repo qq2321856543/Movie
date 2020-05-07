@@ -54,6 +54,12 @@ public class Fragment_two extends BaseFragment implements ICoolor_Movie.IVew {
             //即将上映
             ((ICoolor_Movie.IPresenter)presenter).getComingSoonMovieList(1,10);
         }
+        moretwoAdapter.SetOnclick(new MoretwoAdapter.Onclick() {
+            @Override
+            public void click(int movieId) {
+
+            }
+        });
     }
 
     @Override

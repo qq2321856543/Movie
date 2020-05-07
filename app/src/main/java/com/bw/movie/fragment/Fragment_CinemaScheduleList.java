@@ -69,7 +69,10 @@ public class Fragment_CinemaScheduleList extends BaseFragment implements ICoolor
     @Override
     public void getCinemaScheduleListSuccess(CinemaScheduleListBean cinemaScheduleListBean) {
         List<CinemaScheduleListBean.ResultBean> result = cinemaScheduleListBean.getResult();
-        cinemaScheduleListAdapter.setData(result);
+        if (result!=null){
+
+            cinemaScheduleListAdapter.setData(result);
+        }
     }
     @Override
     public void onResume() {

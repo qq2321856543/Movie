@@ -163,6 +163,7 @@
         android:layout_alignParentBottom="true"
         android:layout_height="wrap_content">
         <Button
+            android:id="@+id/bt_xieyingping"
             android:layout_width="150dp"
             android:layout_height="60dp"
             android:text="写影评"
@@ -171,6 +172,7 @@
             android:textColor="#fff"
             android:background="#e8be18"/>
         <Button
+            android:id="@+id/bt_xuanzuogoupiao"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:text="选座购票"

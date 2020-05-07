@@ -19,6 +19,7 @@ import com.bw.movie.bean.RegisterBean;
 import com.bw.movie.bean.Search_MovieByKeywordBean;
 import com.bw.movie.bean.UserFollowCinemaListBean;
 import com.bw.movie.bean.UserFollowMovieBean;
+import com.bw.movie.bean.UserReserveBean;
 import com.bw.movie.bean.YingPingBean;
 
 import io.reactivex.Observable;
@@ -145,4 +146,13 @@ public interface Apis {
     //用户关注的影院
     @GET("user/v2/verify/findUserFollowCinemaList")
     Observable<UserFollowCinemaListBean> getUserFollowCinemaListBean(@Query("page") int page,@Query("count") int count);
+
+    //用户预约电影
+    @GET("user/v2/verify/findUserReserve")
+    Observable<UserReserveBean> getUserReserve();
+
+    //添加用户对影片的评价
+    @POST("movie/v1/verify/movieComment")
+    @FormUrlEncoded
+    Observable<LoginBean> getMovieComment(@Field("movieId") int movieId,@Field("commentContent") String commentContent,@Field("score") double score);
 }
