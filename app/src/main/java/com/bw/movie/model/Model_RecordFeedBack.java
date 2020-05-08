@@ -1,8 +1,7 @@
 package com.bw.movie.model;
 
 import com.bw.movie.bean.LoginBean;
-import com.bw.movie.bean.RegisterBean;
-import com.bw.movie.icoolor.ICoolor_Newpwd;
+import com.bw.movie.icoolor.ICoolor_RecordFeedBack;
 import com.bw.movie.utils.HttpUtil;
 
 import io.reactivex.Observer;
@@ -10,10 +9,10 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class Model_Newpwd implements ICoolor_Newpwd.IModel {
+public class Model_RecordFeedBack implements ICoolor_RecordFeedBack.IModel {
     @Override
-    public void getNewpwd(String oldPwd, String newPwd, String newPwd2, final ICoolor_Newpwd.NewpwdCallback newpwdCallback) {
-        HttpUtil.getInstance().getApis().getNewpwd(oldPwd,newPwd,newPwd2)
+    public void getRecordFeedBack(String content, final ICoolor_RecordFeedBack.RecordFeedBackCallback recordFeedBackCallback) {
+        HttpUtil.getInstance().getApis().getRecordFeedBack(content)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<LoginBean>() {
@@ -24,7 +23,8 @@ public class Model_Newpwd implements ICoolor_Newpwd.IModel {
 
                     @Override
                     public void onNext(LoginBean loginBean) {
-                        newpwdCallback.getSuccess(loginBean);
+                        recordFeedBackCallback.getSuccess(loginBean);
+
                     }
 
                     @Override

@@ -67,14 +67,13 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="20dp"
                     android:textColor="#FDFDFE"/>
-                <TextView
+                <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="20dp"
-                    android:textColor="#FDFDFE"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:text="10M"/>
+                    android:src="@mipmap/youbaijiantou"/>
             </RelativeLayout>
 
         </RelativeLayout>
@@ -94,16 +93,13 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="20dp"
             android:textColor="#FDFDFE"/>
-        <TextView
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textColor="#FDFDFE"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:text="10M"/>
+            android:src="@mipmap/youbaijiantou"/>
     </RelativeLayout>
     <Button
         android:id="@+id/bt_tuichu"

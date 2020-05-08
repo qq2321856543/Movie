@@ -78,7 +78,7 @@ public class ForgetActivity extends BaseAcitvity implements ICoolor_Newpwd.IView
 
 
     @Override
-    public void getNewpwdSuccess(RegisterBean registerBean) {
+    public void getNewpwdSuccess(LoginBean loginBean) {
 
     }
 }

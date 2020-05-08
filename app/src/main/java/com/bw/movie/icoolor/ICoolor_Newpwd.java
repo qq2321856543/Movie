@@ -8,7 +8,7 @@ import com.bw.movie.bean.RegisterBean;
 public interface ICoolor_Newpwd {
     interface IView extends IBaseView{
         //邮箱验证码
-        void getNewpwdSuccess(RegisterBean registerBean);
+        void getNewpwdSuccess(LoginBean loginBean);
 
 
     }
@@ -21,7 +21,7 @@ public interface ICoolor_Newpwd {
 
     }
     interface NewpwdCallback{
-        void getSuccess(RegisterBean registerBean);
+        void getSuccess(LoginBean loginBean);
     }
 
 }

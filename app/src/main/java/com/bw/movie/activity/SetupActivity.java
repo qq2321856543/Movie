@@ -58,10 +58,12 @@ public class SetupActivity extends BaseAcitvity implements View.OnClickListener 
             case R.id.rl_banben:
                 break;
             case R.id.rl_chongzhi:
+                Intent intent2 = new Intent(SetupActivity.this, ModifyUserPwdActivity.class);
+                startActivity(intent2);
                 break;
             case R.id.bt_tuichu:
-                Intent intent = new Intent(SetupActivity.this, LoginActivity.class);
-                startActivity(intent);
+                Intent intent3 = new Intent(SetupActivity.this, LoginActivity.class);
+                startActivity(intent3);
                 break;
             case R.id.iv_shape:
                 finish();

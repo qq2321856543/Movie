@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.bw.movie.R;
 import com.bw.movie.activity.MyActivity;
 import com.bw.movie.activity.MyMovieCommentListActivity;
+import com.bw.movie.activity.RecordFeedBackActivity;
 import com.bw.movie.activity.SetupActivity;
 import com.bw.movie.activity.UserFollowMovieActivity;
 import com.bw.movie.activity.UserReserveActivity;
@@ -73,6 +74,7 @@ public class Fragment_My extends BaseFragment implements View.OnClickListener {
         ll_wodeyuyue.setOnClickListener(this);
         iv_wodepinglun.setOnClickListener(this);
         iv_shezhi.setOnClickListener(this);
+        iv_yijianfankui.setOnClickListener(this);
 
         String nickName = SPUtils.getString(getContext(), SPUtils.USERINFO_NAME, "nickName");
 
@@ -104,9 +106,14 @@ public class Fragment_My extends BaseFragment implements View.OnClickListener {
             case R.id.iv_wodepinglun:
                 Intent intent3 = new Intent(getContext(), MyMovieCommentListActivity.class);
                 startActivity(intent3);
+                break;
             case R.id.iv_shezhi:
                 Intent intent4 = new Intent(getContext(), SetupActivity.class);
                 startActivity(intent4);
+                break;
+            case R.id.iv_yijianfankui:
+                Intent intent5 = new Intent(getContext(), RecordFeedBackActivity.class);
+                startActivity(intent5);
                 break;
                 default:
         }

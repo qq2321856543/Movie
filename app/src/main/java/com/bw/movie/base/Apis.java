@@ -57,7 +57,7 @@ public interface Apis {
     //修改密码
     @POST("user/v1/verify/modifyUserPwd")
     @FormUrlEncoded
-    Observable<RegisterBean> getNewpwd(@Field("oldPwd") String oldPwd,@Field("newPwd") String newPwd,@Field("newPwd2") String newPwd2);
+    Observable<LoginBean> getNewpwd(@Field("oldPwd") String oldPwd,@Field("newPwd") String newPwd,@Field("newPwd2") String newPwd2);
 
     //轮播
     @GET("tool/v2/banner")
@@ -160,4 +160,9 @@ public interface Apis {
     //查询我对电影的评论列表
     @GET("user/v2/verify/findMyMovieCommentList")
     Observable<MyMovieCommentListBean> getMyMovieCommentList(@Query("page") int page,@Query("count") int count);
+
+    //查询我对电影的评论列表
+    @POST("tool/v1/verify/recordFeedBack")
+    @FormUrlEncoded
+    Observable<LoginBean> getRecordFeedBack(@Field("content") String content);
 }

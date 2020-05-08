@@ -21,14 +21,14 @@ public class Presenter_Newpwd extends BasePresenter implements ICoolor_Newpwd.IP
 
     @Override
     public void getNewpwd(String oldPwd, String newPwd, String newPwd2) {
-        model.getNewpwd(oldPwd, newPwd, newPwd2, new ICoolor_Newpwd.NewpwdCallback() {
-            @Override
-            public void getSuccess(RegisterBean registerBean) {
-                IBaseView view = getView();
-                if (view!=null){
-                    ((ICoolor_Newpwd.IView)view).getNewpwdSuccess(registerBean);
-                }
-            }
-        });
+//        model.getNewpwd(oldPwd, newPwd, newPwd2, new ICoolor_Newpwd.NewpwdCallback() {
+//            @Override
+//            public void getSuccess(RegisterBean registerBean) {
+//                IBaseView view = getView();
+//                if (view!=null){
+//                    ((ICoolor_Newpwd.IView)view).getNewpwdSuccess(registerBean);
+//                }
+//            }
+//        });
     }
 }
