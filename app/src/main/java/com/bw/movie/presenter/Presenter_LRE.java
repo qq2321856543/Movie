@@ -40,7 +40,6 @@ public class Presenter_LRE extends BasePresenter implements ICoolor_LRE.IPresent
 
     @Override
     public void getLogin(String email, String pwd) {
-        Toast.makeText(App.getAppContext(), "getLogin1", Toast.LENGTH_SHORT).show();
 
         model.getLogin(email, pwd, new ICoolor_LRE.LoginCallback() {
             @Override

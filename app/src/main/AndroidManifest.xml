@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.bw.movie">
 
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission
         android:name="android.permission.CHANGE_CONFIGURATION"
@@ -34,12 +35,13 @@
         android:name=".base.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="电影"
+        android:label="@string/app_name"
         android:networkSecurityConfig="@xml/jiu"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.ModifyUserPwdActivity"></activity>
+        <activity android:name=".activity.XuanZuoActivity"></activity>
+        <activity android:name=".activity.ModifyUserPwdActivity" />
         <activity android:name=".activity.RecordFeedBackActivity" />
         <activity android:name=".activity.SetupActivity" />
         <activity android:name=".activity.MyMovieCommentListActivity" />

@@ -18,15 +18,21 @@ import com.bw.movie.bean.RecommendCinemasBean;
 import com.bw.movie.bean.RegionListBean;
 import com.bw.movie.bean.RegisterBean;
 import com.bw.movie.bean.Search_MovieByKeywordBean;
+import com.bw.movie.bean.UpLoadHeadPicBean;
 import com.bw.movie.bean.UserFollowCinemaListBean;
 import com.bw.movie.bean.UserFollowMovieBean;
 import com.bw.movie.bean.UserReserveBean;
 import com.bw.movie.bean.YingPingBean;
 
+import java.io.File;
+
 import io.reactivex.Observable;
+import okhttp3.RequestBody;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 
@@ -165,4 +171,8 @@ public interface Apis {
     @POST("tool/v1/verify/recordFeedBack")
     @FormUrlEncoded
     Observable<LoginBean> getRecordFeedBack(@Field("content") String content);
+
+    //头像上传
+    @POST("user/v1/verify/uploadHeadPic")
+    Observable<UpLoadHeadPicBean> getUpLoadHeadPicBean(@Body RequestBody body);
 }

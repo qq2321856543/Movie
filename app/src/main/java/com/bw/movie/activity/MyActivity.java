@@ -2,25 +2,39 @@ package com.bw.movie.activity;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bw.movie.R;
 import com.bw.movie.base.BaseAcitvity;
 import com.bw.movie.base.BasePresenter;
+import com.bw.movie.bean.UpLoadHeadPicBean;
+import com.bw.movie.icoolor.ICoolor_UploadHeadPic;
+import com.bw.movie.presenter.Presenter_UploadHeadPic;
+import com.bw.movie.utils.HttpUtil;
 import com.bw.movie.utils.SPUtils;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.controller.AbstractDraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.facebook.imagepipeline.request.ImageRequest;
 import com.facebook.imagepipeline.request.ImageRequestBuilder;
+import com.wildma.pictureselector.PictureSelector;
+//import com.wildma.pictureselector.PictureSelector;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import butterknife.BindView;
+import okhttp3.RequestBody;
 
-public class MyActivity extends BaseAcitvity implements View.OnClickListener {
+public class MyActivity extends BaseAcitvity implements View.OnClickListener, ICoolor_UploadHeadPic.IVew {
 
     @BindView(R.id.sdv)
     SimpleDraweeView sdv;
@@ -36,7 +50,7 @@ public class MyActivity extends BaseAcitvity implements View.OnClickListener {
     ImageView iv_shap;
     @Override
     protected BasePresenter initPresenter() {
-        return null;
+        return new Presenter_UploadHeadPic(this);
     }
 
     @Override
@@ -52,6 +66,7 @@ public class MyActivity extends BaseAcitvity implements View.OnClickListener {
     @Override
     protected void initData() {
         iv_shap.setOnClickListener(this);
+        sdv.setOnClickListener(this);
 
         String headPic = SPUtils.getString(this, SPUtils.USERINFO_NAME, "headPic");
         String nickName = SPUtils.getString(this, SPUtils.USERINFO_NAME, "nickName");
@@ -81,9 +96,38 @@ public class MyActivity extends BaseAcitvity implements View.OnClickListener {
             case R.id.iv_shap:
                 finish();
                 break;
+            case R.id.sdv:
+                PictureSelector
+                        .create(this,PictureSelector.SELECT_REQUEST_CODE)
+                        .selectPicture(true,200,200,1,1);
+                break;
 
             default:
         }
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode==RESULT_OK&&requestCode==PictureSelector.SELECT_REQUEST_CODE){
+            if (data != null) {
+                String stringExtra = data.getStringExtra(PictureSelector.PICTURE_PATH);
+                File file = new File(stringExtra);
+                ArrayList<File> files = new ArrayList<>();
+                files.add(file);
+                HashMap<String, String> map = new HashMap<>();
+                RequestBody requsetBody = HttpUtil.getInstance().getRequsetBody(files, map);
+                BasePresenter presenter = getPresenter();
+                if (presenter != null) {
+                    ((ICoolor_UploadHeadPic.IPersenter)presenter).getUploadHeadPic(requsetBody);
+                }
+            }
+        }
+    }
+
+    @Override
+    public void getUploadHeadPicSuccess(UpLoadHeadPicBean upLoadHeadPicBean) {
+        Toast.makeText(this, ""+upLoadHeadPicBean.getMessage(), Toast.LENGTH_SHORT).show();
     }
 }

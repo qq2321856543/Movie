@@ -188,7 +188,8 @@ public class MoviesDetailActivity extends BaseAcitvity implements ICoolor_Follow
         bt_xuanzuogoupiao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent1 = new Intent(MoviesDetailActivity.this, XuanZuoActivity.class);
+                startActivity(intent1);
             }
         });
     }

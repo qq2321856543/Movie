@@ -78,8 +78,8 @@ public class LoginActivity extends BaseAcitvity implements ICoolor_LRE.IView, Vi
 
     @Override
     public void getLoginSuccess(LoginBean loginBean) {
+        Toast.makeText(this, ""+loginBean.getMessage(), Toast.LENGTH_SHORT).show();
         if (loginBean.getMessage().equals("登陆成功")){
-            Toast.makeText(this, "登陆成功", Toast.LENGTH_SHORT).show();
             LoginBean.ResultBean result = loginBean.getResult();
             int userId = result.getUserId();
             String sessionId = result.getSessionId();
