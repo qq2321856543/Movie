@@ -100,7 +100,6 @@ public class HttpUtil {
 //        if (map.size() < 1){
 //            return null;
 //        }
-
         MultipartBody.Builder builder = new MultipartBody.Builder().setType(MultipartBody.FORM);
         for (Map.Entry<String,String> entry:map.entrySet()){
             Log.i("xxx","key = "+entry.getKey()+"value = "+entry.getValue());
@@ -113,4 +112,13 @@ public class HttpUtil {
 
         return builder.build();
     }
+//    public RequestBody getBody(List<File> files,HashMap<String,String> map){
+//        MultipartBody.Builder builder = new MultipartBody.Builder().setType(MultipartBody.FORM);
+//        for (Map.Entry<String,String> entry:map.entrySet()){
+//            builder.addFormDataPart(entry.getKey(),entry.getValue()+"");
+//        }
+//        for (int i=0;i<files.size();i++){
+//            builder.addFormDataPart("image",files.get(i).getName(),RequestBody.create(MediaType.parse()))
+//        }
+//    }
 }

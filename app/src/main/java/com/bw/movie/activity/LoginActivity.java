@@ -109,7 +109,7 @@ public class LoginActivity extends BaseAcitvity implements ICoolor_LRE.IView, Vi
 
     @Override
     public void getWxSuccess(LoginBean loginBean) {
-
+        Toast.makeText(this, ""+loginBean.getMessage(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -182,6 +182,10 @@ public class LoginActivity extends BaseAcitvity implements ICoolor_LRE.IView, Vi
         Log.i("dj", "wxcode is " + wxCodeBean.getCode());
         EventBus.getDefault().removeStickyEvent(wxCodeBean);
         //TODO:调用wx登录接口
+        BasePresenter presenter = getPresenter();
+        if (presenter != null) {
+            ((ICoolor_LRE.IPresenter)presenter).getWx(wxCodeBean.getCode());
+        }
     }
 
 }
