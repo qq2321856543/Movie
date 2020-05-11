@@ -1,6 +1,7 @@
 package com.bw.movie.activity;
 
 import android.content.Intent;
+import android.provider.SyncStateContract;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -24,6 +25,7 @@ import com.bw.movie.utils.EncryptUtil;
 import com.bw.movie.utils.HttpUtil;
 import com.bw.movie.utils.SPUtils;
 import com.tencent.mm.opensdk.modelmsg.SendAuth;
+import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -141,7 +143,15 @@ public class LoginActivity extends BaseAcitvity implements ICoolor_LRE.IView, Vi
                 break;
             //微信登录
             case R.id.ll_wx:
-                doWxLogin();
+
+                Constants.wx_api = WXAPIFactory.createWXAPI(getApplicationContext(), Constants.APP_ID, true);
+                Constants.wx_api.registerApp(Constants.APP_ID);
+
+                final SendAuth.Req req = new SendAuth.Req();
+                req.scope = "snsapi_userinfo";
+                req.state = "wechat_sdk_demo_test";
+                Constants.wx_api.sendReq(req);
+//                doWxLogin();
                 break;
              //没有帐号 注册
             case R.id.tv_zhu:
@@ -156,19 +166,19 @@ public class LoginActivity extends BaseAcitvity implements ICoolor_LRE.IView, Vi
        //static boolean matches = Pattern.compile("[1-9]\\d{7,10}@qq\\.com").matcher(email.getText().toString()).matches();
 
     }
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if (!EventBus.getDefault().isRegistered(this)) {
-            EventBus.getDefault().register(this);
-        }
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        EventBus.getDefault().unregister(this);
-    }
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        if (!EventBus.getDefault().isRegistered(this)) {
+//            EventBus.getDefault().register(this);
+//        }
+//    }
+//
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//        EventBus.getDefault().unregister(this);
+//    }
 
     private void doWxLogin() {
         SendAuth.Req req = new SendAuth.Req();
@@ -177,15 +187,15 @@ public class LoginActivity extends BaseAcitvity implements ICoolor_LRE.IView, Vi
         App.getWxApi().sendReq(req);
     }
 
-    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
-    public void receiveWXCode(WXCodeBean wxCodeBean) {
-        Log.i("dj", "wxcode is " + wxCodeBean.getCode());
-        EventBus.getDefault().removeStickyEvent(wxCodeBean);
-        //TODO:调用wx登录接口
-        BasePresenter presenter = getPresenter();
-        if (presenter != null) {
-            ((ICoolor_LRE.IPresenter)presenter).getWx(wxCodeBean.getCode());
-        }
-    }
+//    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
+//    public void receiveWXCode(WXCodeBean wxCodeBean) {
+//        Log.i("dj", "wxcode is " + wxCodeBean.getCode());
+//        EventBus.getDefault().removeStickyEvent(wxCodeBean);
+//        //TODO:调用wx登录接口
+//        BasePresenter presenter = getPresenter();
+//        if (presenter != null) {
+//            ((ICoolor_LRE.IPresenter)presenter).getWx(wxCodeBean.getCode());
+//        }
+//    }
 
 }

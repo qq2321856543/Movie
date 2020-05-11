@@ -2,6 +2,8 @@ package com.bw.movie.fragment;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -78,15 +80,42 @@ public class Fragment_My extends BaseFragment implements View.OnClickListener {
 
         String nickName = SPUtils.getString(getContext(), SPUtils.USERINFO_NAME, "nickName");
 
-        String headPic = SPUtils.getString(getContext(), SPUtils.USERINFO_NAME, "headPic");
-        Uri uri = Uri.parse(headPic);
-        ImageRequest build = ImageRequestBuilder.newBuilderWithSource(uri)
-                .setProgressiveRenderingEnabled(true).build();
-        AbstractDraweeController build1 = Fresco.newDraweeControllerBuilder().setImageRequest(build).build();
-        sdv.setController(build1);
+
         tv_name.setText(nickName);
 
+        Runnable task = new Runnable() {
+            @Override
+            public void run() {
+                /**
+                 * 此处执行任务
+                 * */
+                mHanlder.sendEmptyMessage(1);
+                mHanlder.postDelayed(this, 1 * 1000);//延迟5秒,再次执行task本身,实现了循环的效果
+            }
+        };
+        mHanlder.postDelayed(task, 1000);//第一次调用,延迟1秒执行task
+
     }
+    private Handler mHanlder = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case 1:
+                    String headPic = SPUtils.getString(getContext(), SPUtils.USERINFO_NAME, "headPic");
+                    Uri uri = Uri.parse(headPic);
+                    ImageRequest build = ImageRequestBuilder.newBuilderWithSource(uri)
+                            .setProgressiveRenderingEnabled(true).build();
+                    AbstractDraweeController build1 = Fresco.newDraweeControllerBuilder().setImageRequest(build).build();
+                    sdv.setController(build1);
+                    break;
+                default:
+                    break;
+            }
+            super.handleMessage(msg);
+        }
+    };
+
+
 
     @Override
     public void onClick(View v) {

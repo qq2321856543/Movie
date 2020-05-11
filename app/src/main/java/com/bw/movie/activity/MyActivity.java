@@ -128,6 +128,15 @@ public class MyActivity extends BaseAcitvity implements View.OnClickListener, IC
 
     @Override
     public void getUploadHeadPicSuccess(UpLoadHeadPicBean upLoadHeadPicBean) {
+
+        Uri uri = Uri.parse(upLoadHeadPicBean.getHeadPath());
+        ImageRequest build = ImageRequestBuilder.newBuilderWithSource(uri)
+                .setProgressiveRenderingEnabled(true).build();
+        AbstractDraweeController build1 = Fresco.newDraweeControllerBuilder().setImageRequest(build).build();
+        sdv.setController(build1);
+
+        SPUtils.putString(this,SPUtils.USERINFO_NAME,"headPic",upLoadHeadPicBean.getHeadPath());
+
         Toast.makeText(this, ""+upLoadHeadPicBean.getMessage(), Toast.LENGTH_SHORT).show();
     }
 }

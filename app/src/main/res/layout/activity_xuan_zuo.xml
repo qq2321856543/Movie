@@ -4,10 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".activity.XuanZuoActivity">
     <com.bw.movie.view.SeatTable
         android:id="@+id/mSearchView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+    <Button
+        android:id="@+id/bt_ok"
+        android:layout_width="60dp"
+        android:layout_height="50dp"
+        android:text="支付"
+        android:layout_gravity="center_horizontal"/>
 </LinearLayout>
