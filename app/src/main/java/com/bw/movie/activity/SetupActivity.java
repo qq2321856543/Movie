@@ -62,6 +62,7 @@ public class SetupActivity extends BaseAcitvity implements View.OnClickListener 
                 startActivity(intent2);
                 break;
             case R.id.bt_tuichu:
+                finish();
                 Intent intent3 = new Intent(SetupActivity.this, LoginActivity.class);
                 startActivity(intent3);
                 break;

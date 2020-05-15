@@ -165,6 +165,7 @@ public class Fragment_Movie extends BaseFragment implements ICoolor_Movie.IVew, 
             //有网络
             BasePresenter presenter = getPresenter();
             if (presenter!=null&&presenter instanceof ICoolor_Movie.IPresenter){
+                showDialog();
                 //轮播
                 ((ICoolor_Movie.IPresenter)presenter).getXbanner();
                 //正在热映
@@ -228,18 +229,23 @@ public class Fragment_Movie extends BaseFragment implements ICoolor_Movie.IVew, 
 
     @Override
     public void getReleaseMovieSuccess(Movie_ReleaseMovieBean releaseMovieBean) {
+        hideDialog();
+
         result1 = releaseMovieBean.getResult();
         releaseMovieAdapter.setData(result1);
     }
 
     @Override
     public void getComingSoonMovieSuccess(Movie_ComingSoonMovie comingSoonMovie) {
+        hideDialog();
+
         result2 = comingSoonMovie.getResult();
         comingSoonMovieAdapter.setData(result2);
     }
 
     @Override
     public void getHotMovieSuccess(Movie_HotMovieBean hotMovieBean) {
+        hideDialog();
         result3 = hotMovieBean.getResult();
         hotMovieAdapter.setData(result3);
         Glide.with(getContext()).load(result3.get(0).getHorizontalImage()).error(R.mipmap.ic_launcher).placeholder(R.mipmap.ic_launcher).into(iv_max);

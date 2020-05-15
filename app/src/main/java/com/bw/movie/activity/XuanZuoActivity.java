@@ -2,6 +2,7 @@ package com.bw.movie.activity;
 
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.bw.movie.R;
 import com.bw.movie.base.BaseAcitvity;
@@ -47,39 +48,39 @@ public class XuanZuoActivity extends BaseAcitvity {
 
             }
         });
-//        mSearchView.setScreenName("8号厅荧幕");//设置屏幕名称
-//        mSearchView.setMaxSelected(3);//设置最多选中
-//        mSearchView.setSeatChecker(new SeatTable.SeatChecker() {
-//            @Override
-//            public boolean isValidSeat(int row, int column) {
-//                if(column==2) {
-//                    return false;
-//                }
-//                return true;
-//            }
-//            @Override
-//            public boolean isSold(int row, int column) {
-//                if(row==4&&column==6){
-//                    return true;
-//                }else if(row==6&&column==6){
-//                    return true;
-//                }
-//                return false;
-//            }
-//            @Override
-//            public void checked(int row, int column) {
-//                Toast.makeText(XuanZuoActivity.this, "排"+row+"列"+column, Toast.LENGTH_SHORT).show();
-//            }
-//            @Override
-//            public void unCheck(int row, int column) {
-//
-//            }
-//            @Override
-//            public String[] checkedSeatTxt(int row, int column) {
-//                return null;
-//            }
-//        });
-//        mSearchView.setData(10,15);
+        mSearchView.setScreenName("8号厅荧幕");//设置屏幕名称
+        mSearchView.setMaxSelected(3);//设置最多选中
+        mSearchView.setSeatChecker(new SeatTable.SeatChecker() {
+            @Override
+            public boolean isValidSeat(int row, int column) {
+                if(column==2) {
+                    return false;
+                }
+                return true;
+            }
+            @Override
+            public boolean isSold(int row, int column) {
+                if(row==4&&column==6){
+                    return true;
+                }else if(row==6&&column==6){
+                    return true;
+                }
+                return false;
+            }
+            @Override
+            public void checked(int row, int column) {
+                Toast.makeText(XuanZuoActivity.this, "排"+row+"列"+column, Toast.LENGTH_SHORT).show();
+            }
+            @Override
+            public void unCheck(int row, int column) {
+
+            }
+            @Override
+            public String[] checkedSeatTxt(int row, int column) {
+                return null;
+            }
+        });
+        mSearchView.setData(10,15);
 
     }
     private void pay() {

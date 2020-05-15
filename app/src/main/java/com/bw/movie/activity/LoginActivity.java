@@ -101,6 +101,7 @@ public class LoginActivity extends BaseAcitvity implements ICoolor_LRE.IView, Vi
             //跳转
             Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
             startActivity(intent);
+            finish();
         }
     }
 

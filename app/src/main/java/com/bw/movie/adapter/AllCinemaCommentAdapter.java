@@ -48,6 +48,8 @@ public class AllCinemaCommentAdapter extends RecyclerView.Adapter<RecyclerView.V
         ((ViewhodlerYingPing)viewHolder).ying_ping_zuo_ren.setText(result.get(i).getGreatNum()+"");
     }
 
+
+
     @Override
     public int getItemCount() {
         return result.size();
