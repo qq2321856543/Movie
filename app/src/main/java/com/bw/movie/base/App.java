@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Environment;
+import android.support.multidex.MultiDex;
 
 import com.facebook.cache.disk.DiskCacheConfig;
 import com.facebook.drawee.backends.pipeline.Fresco;
@@ -25,6 +26,7 @@ public class App extends Application {
         super.onCreate();
         regToWx();
         mcontext = getApplicationContext();
+        MultiDex.install(this);
 
         ImagePipelineConfig build = ImagePipelineConfig.newBuilder(this)
                 .setMainDiskCacheConfig(DiskCacheConfig.newBuilder(this)
